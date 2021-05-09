@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Grafik
+namespace Grafik_Console
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            System.Console.WriteLine("Hello World!");
         }
     }
 }
