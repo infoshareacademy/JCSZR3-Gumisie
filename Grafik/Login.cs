@@ -12,6 +12,8 @@ namespace Grafik_Console
         private static string userPassword;
         public static void AskForCredentials()
         {
+            userMail = "";
+            userPassword = "";
             Console.WriteLine("Please provide your email:");
             userMail = Console.ReadLine();
             Console.WriteLine("Please provide you password:");
