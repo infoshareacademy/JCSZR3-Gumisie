@@ -6,10 +6,13 @@ namespace Grafik_Console
     {
         static void Main()
         {
+            //applicaation start point
             do
             {
                 Menu.DrawTopBanner();
                 Login.AskForCredentials();
+
+                //log-in 
                 while (!Login.CheckCredentials())
                 {
                     
@@ -19,9 +22,12 @@ namespace Grafik_Console
                     Menu.DrawTopBanner();
                     Login.AskForCredentials();
                 }
+
+                //display main menu after successful log-in
                 Menu.DrawTopBanner("Jakub");
                 MainMenu mainMenu = new();
-                mainMenu.DrawMenu();
+                mainMenu.ListMenu();
+                
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
     }
