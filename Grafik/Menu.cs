@@ -10,21 +10,6 @@ namespace Grafik_Console
     {
         public abstract Dictionary<int, string> MenuOptions { get; set; }
         public abstract void ListMenu();
-        public static void DrawTopBanner()
-        {
-            Console.Clear();
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("|        APPLICATION NAME         |");
-            Console.WriteLine("-----------------------------------\n");
-        }
-        public static void DrawTopBanner(string userName)
-        {
-            Console.Clear();
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("|        APPLICATION NAME         |");
-            Console.WriteLine("-----------------------------------\n");
-            Console.WriteLine($"Welcome, {userName}                 {DateTime.Now.ToShortDateString()}");
-        }
     }
     public class MainMenu : Menu
     {
