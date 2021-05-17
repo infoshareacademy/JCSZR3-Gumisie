@@ -33,8 +33,8 @@ namespace Grafik_Logic
         public void getDate() {
             DateTime dateTime = DateTime.Now;
         }
-        public void getDayOfTheWeek() { 
-        
+        public int getDayOfTheWeek(DateTime date) {
+            return default;
         }
         public int calcaulteHoursForShift(int start, int end) => DayWorkingHours = end - start;
     }
