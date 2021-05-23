@@ -11,7 +11,6 @@ namespace Grafik_Console
             {
                 Banner.DrawTopBanner();
                 Login.AskForCredentials();
-
                 //log-in 
                 while (!Login.CheckCredentials())
                 {
@@ -34,6 +33,7 @@ namespace Grafik_Console
                     mainMenu.ListMenu();
                     Console.WriteLine("Provided value was invalid. Please choose one option from the menu.");
                 }
+
 
 
             } while (Console.ReadKey().Key != ConsoleKey.Escape);

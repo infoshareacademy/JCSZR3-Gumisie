@@ -23,9 +23,7 @@ namespace Grafik_Console
                 {3,"Submit a new holiday request" },
             };
         }
-
         protected override Dictionary<int, string> MenuOptions { get; set; }
-
         public override Menu CheckMenuChoice(int userChoice) =>
             userChoice switch
             {
@@ -34,7 +32,6 @@ namespace Grafik_Console
                 3 => new SubmitNewHolidaysRequestSubmenu(),
                 _ => null
             };
-
         public override void ListMenu()
         {
             Console.WriteLine("\nPlease choose one of the options to proceed:");
@@ -45,57 +42,6 @@ namespace Grafik_Console
             Console.WriteLine();
         }
     }
-
-    public class SubmitNewHolidaysRequestSubmenu : Menu
-    {
-        public SubmitNewHolidaysRequestSubmenu()
-        {
-            MenuOptions = new Dictionary<int, string>
-            {
-                {1,"Check my shifts" },
-                {2,"Submit a new shift request" },
-                {3,"Submit a new holiday request" },
-            };
-        }
-
-        protected override Dictionary<int, string> MenuOptions { get ; set; }
-
-        public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ListMenu()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class SubmitNewShiftRequestSubmenu : Menu
-    {
-        public SubmitNewShiftRequestSubmenu()
-        {
-            MenuOptions = new Dictionary<int, string>
-            {
-                {1,"Check my shifts" },
-                {2,"Submit a new shift request" },
-                {3,"Submit a new holiday request" },
-            };
-        }
-
-        protected override Dictionary<int, string> MenuOptions { get ; set ; }
-
-        public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void ListMenu()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class CheckMyShiftsSubmenu : Menu
     {
         public CheckMyShiftsSubmenu()
@@ -107,14 +53,53 @@ namespace Grafik_Console
                 {3,"Submit a new holiday request" },
             };
         }
-
-        protected override Dictionary<int, string> MenuOptions { get ; set ; }
-
+        protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
         }
-
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class SubmitNewHolidaysRequestSubmenu : Menu
+    {
+        public SubmitNewHolidaysRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class SubmitNewShiftRequestSubmenu : Menu
+    {
+        public SubmitNewShiftRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
         public override void ListMenu()
         {
             throw new NotImplementedException();
