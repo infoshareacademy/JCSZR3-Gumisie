@@ -8,8 +8,9 @@ namespace Grafik_Console
 {
     abstract public class Menu
     {
-        public abstract Dictionary<int, string> MenuOptions { get; set; }
+        protected abstract Dictionary<int, string> MenuOptions { get; set; }
         public abstract void ListMenu();
+        public abstract Menu CheckMenuChoice(int userChoice);
     }
     public class MainMenu : Menu
     {
@@ -18,19 +19,105 @@ namespace Grafik_Console
             MenuOptions = new Dictionary<int, string>
             {
                 {1,"Check my shifts" },
-                {2,"Send a new shift request" },
-                {3,"Send a new holiday request" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
             };
         }
-        public override Dictionary<int, string> MenuOptions { get; set; }
+
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+
+        public override Menu CheckMenuChoice(int userChoice) =>
+            userChoice switch
+            {
+                1 => new CheckMyShiftsSubmenu(),
+                2 => new SubmitNewShiftRequestSubmenu(),
+                3 => new SubmitNewHolidaysRequestSubmenu(),
+                _ => null
+            };
+
         public override void ListMenu()
         {
             Console.WriteLine("\nPlease choose one of the options to proceed:");
-            foreach (KeyValuePair<int,string> item in MenuOptions)
+            foreach (KeyValuePair<int, string> item in MenuOptions)
             {
                 Console.WriteLine($"{item.Key}.{item.Value}");
             }
             Console.WriteLine();
+        }
+    }
+
+    public class SubmitNewHolidaysRequestSubmenu : Menu
+    {
+        public SubmitNewHolidaysRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+
+        protected override Dictionary<int, string> MenuOptions { get ; set; }
+
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class SubmitNewShiftRequestSubmenu : Menu
+    {
+        public SubmitNewShiftRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+
+        protected override Dictionary<int, string> MenuOptions { get ; set ; }
+
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class CheckMyShiftsSubmenu : Menu
+    {
+        public CheckMyShiftsSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+
+        protected override Dictionary<int, string> MenuOptions { get ; set ; }
+
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
         }
     }
 }
