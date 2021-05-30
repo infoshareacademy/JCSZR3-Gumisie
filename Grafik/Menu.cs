@@ -32,7 +32,9 @@ namespace Grafik_Console
             {
                 1 => new CheckMyShiftsSubmenu(),
                 2 => new SubmitNewShiftRequestSubmenu(),
-                3 => new SubmitNewHolidaysRequestSubmenu(),
+                3 => new SubmitNewAbsenceRequestSubmenu(),
+                4 => new CheckDayilyTimeshiftsSubmenu(),
+                5 => new ModifyEmployeesSubmenu(),
                 _ => null
             };
         public override void ListMenu()
@@ -80,9 +82,9 @@ namespace Grafik_Console
             throw new NotImplementedException();
         }
     }
-    public class SubmitNewHolidaysRequestSubmenu : Menu
+    public class SubmitNewShiftRequestSubmenu : Menu
     {
-        public SubmitNewHolidaysRequestSubmenu()
+        public SubmitNewShiftRequestSubmenu()
         {
             MenuOptions = new Dictionary<int, string>
             {
@@ -102,9 +104,51 @@ namespace Grafik_Console
             throw new NotImplementedException();
         }
     }
-    public class SubmitNewShiftRequestSubmenu : Menu
+    public class SubmitNewAbsenceRequestSubmenu : Menu
     {
-        public SubmitNewShiftRequestSubmenu()
+        public SubmitNewAbsenceRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class CheckDayilyTimeshiftsSubmenu : Menu
+    {
+        public CheckDayilyTimeshiftsSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class ModifyEmployeesSubmenu : Menu
+    {
+        public ModifyEmployeesSubmenu()
         {
             MenuOptions = new Dictionary<int, string>
             {
