@@ -8,7 +8,7 @@ namespace Grafik_Console
         static void Main()
         {
             //application start point
-            bool loopProgram;
+            bool loopProgram = true;
             Banner.DrawTopBanner();
             //Login.AskForCredentials();
             ////log-in 
@@ -28,7 +28,6 @@ namespace Grafik_Console
                 mainMenu.ListMenu();
 
                 //check user's choice in the main menu and returns the sebmenu
-                loopProgram = true;
                 while (!Int32.TryParse(Console.ReadLine(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null)
                 {
                     if (userChoice == 0)
