@@ -30,7 +30,7 @@ namespace Grafik_Console
         public override Menu CheckMenuChoice(int userChoice) =>
             userChoice switch
             {
-                1 => new CheckMyShiftsSubmenu(),
+                1 => new CheckShiftsSubmenu(),
                 2 => new SubmitNewShiftRequestSubmenu(),
                 3 => new SubmitNewAbsenceRequestSubmenu(),
                 4 => new CheckDayilyTimeshiftsSubmenu(),
@@ -47,9 +47,9 @@ namespace Grafik_Console
             Console.WriteLine();
         }
     }
-    public class CheckMyShiftsSubmenu : Menu
+    public class CheckShiftsSubmenu : Menu
     {
-        public CheckMyShiftsSubmenu()
+        public CheckShiftsSubmenu()
         {
             //MenuOptions = new Dictionary<int, string>
             //{
@@ -93,6 +93,7 @@ namespace Grafik_Console
                 {3,"Submit a new holiday request" },
             };
             Console.WriteLine("Menu 2");
+            Console.ReadLine();
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
@@ -114,6 +115,8 @@ namespace Grafik_Console
                 {2,"Submit a new shift request" },
                 {3,"Submit a new holiday request" },
             };
+            Console.WriteLine("Menu 3");
+            Console.ReadLine();
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
@@ -135,6 +138,8 @@ namespace Grafik_Console
                 {2,"Submit a new shift request" },
                 {3,"Submit a new holiday request" },
             };
+            Console.WriteLine("Menu 4");
+            Console.ReadLine();
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
@@ -156,6 +161,8 @@ namespace Grafik_Console
                 {2,"Submit a new shift request" },
                 {3,"Submit a new holiday request" },
             };
+            Console.WriteLine("Menu 5");
+            Console.ReadLine();
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
