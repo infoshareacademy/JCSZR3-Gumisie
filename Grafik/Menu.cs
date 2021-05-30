@@ -37,7 +37,7 @@ namespace Grafik_Console
             };
         public override void ListMenu()
         {
-            Console.WriteLine("\nPlease choose one of the options to proceed:");
+            Console.WriteLine("\nPlease choose one of the options to proceed. Press 0 to exit.");
             foreach (KeyValuePair<int, string> item in MenuOptions)
             {
                 Console.WriteLine($"{item.Key}.{item.Value}");
