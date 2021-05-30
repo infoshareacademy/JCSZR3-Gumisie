@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Grafik_Logic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,11 @@ namespace Grafik_Console
         {
             MenuOptions = new Dictionary<int, string>
             {
-                {1,"Check my shifts" },
-                {2,"Submit a new shift request" },
-                {3,"Submit a new holiday request" },
+                {1,"Check shifts" },   //ALL - depending on login 
+                {2,"Submit a new shift request" }, //ALL - depending on login 
+                {3,"Submit a absence request" },  //ALL - depending on login
+                {4,"Check day's timeshifts" }, //ALL - whole team's timeshifts
+                {5,"Modify employee's timeshift" }, //Manager's only
             };
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
@@ -46,12 +49,26 @@ namespace Grafik_Console
     {
         public CheckMyShiftsSubmenu()
         {
-            MenuOptions = new Dictionary<int, string>
+            //MenuOptions = new Dictionary<int, string>
+            //{
+            //    {1,"Check my shifts" },
+            //    {2,"Submit a new shift request" },
+            //    {3,"Submit a new holiday request" },
+            //};
+            Banner.DrawTopBanner("Jakub");
+            Console.WriteLine("Please provide a date");
+            var dateChoice = Console.ReadLine();
+            var output = ShiftChecker.CheckShift(dateChoice);
+            Console.WriteLine(output);
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
-                {1,"Check my shifts" },
-                {2,"Submit a new shift request" },
-                {3,"Submit a new holiday request" },
-            };
+                Banner.DrawTopBanner("Jakub");
+                Console.WriteLine("Please provide a date");
+                dateChoice = Console.ReadLine();
+                output = ShiftChecker.CheckShift(dateChoice);
+                Console.WriteLine(output);
+            }
+
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
@@ -73,6 +90,7 @@ namespace Grafik_Console
                 {2,"Submit a new shift request" },
                 {3,"Submit a new holiday request" },
             };
+            Console.WriteLine("Menu 2");
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
