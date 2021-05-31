@@ -34,7 +34,7 @@ namespace Grafik_Console
                 2 => new SubmitNewShiftRequestSubmenu(),
                 3 => new SubmitNewAbsenceRequestSubmenu(),
                 4 => new CheckDayilyTimeshiftsSubmenu(),
-                5 => new ModifyEmployeesSubmenu(),
+                5 => new ModifyEmployeesTimeshiftSubmenu(),
                 _ => null
             };
         public override void ListMenu()
@@ -151,9 +151,9 @@ namespace Grafik_Console
             throw new NotImplementedException();
         }
     }
-    public class ModifyEmployeesSubmenu : Menu
+    public class ModifyEmployeesTimeshiftSubmenu : Menu
     {
-        public ModifyEmployeesSubmenu()
+        public ModifyEmployeesTimeshiftSubmenu()
         {
             MenuOptions = new Dictionary<int, string>
             {
