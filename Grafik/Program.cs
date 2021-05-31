@@ -17,7 +17,6 @@ namespace Grafik_Console
                 {
                     Console.WriteLine("Wrong credentials. Please press any key and try again.");
                     Console.ReadKey();
-                    Console.Clear();
                 }
                 Banner.DrawTopBanner();
                 Login.AskForCredentials();
