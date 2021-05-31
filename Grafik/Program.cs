@@ -9,17 +9,20 @@ namespace Grafik_Console
         {
             //application start point
             bool loopProgram = true;
-            Banner.DrawTopBanner();
-            //Login.AskForCredentials();
-            ////log-in 
-            //while (!Login.CheckCredentials())
-            //{
-            //    Console.WriteLine("Wrong credentials. Please press any key and try again.");
-            //    Console.ReadLine();
-            //    Console.Clear();
-            //    Banner.DrawTopBanner();
-            //    Login.AskForCredentials();
-            //}
+            var i = 0;
+            do
+            {
+                i++;
+                if (i>1)
+                {
+                    Console.WriteLine("Wrong credentials. Please press any key and try again.");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                Banner.DrawTopBanner();
+                Login.AskForCredentials();
+            } while (!Login.CheckCredentials());
+
             do
             {
                 //display main menu after successful log-in
