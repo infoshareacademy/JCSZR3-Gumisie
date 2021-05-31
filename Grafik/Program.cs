@@ -28,9 +28,10 @@ namespace Grafik_Console
                 mainMenu.ListMenu();
 
                 //check user's choice in the main menu and returns the sebmenu
-                while (!Int32.TryParse(Console.ReadLine(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null)
+                var pressedKey = Console.ReadKey().Key;
+                while (!Int32.TryParse(Char.GetNumericValue((char)pressedKey).ToString(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null)
                 {
-                    if (userChoice == 0)
+                    if (pressedKey == ConsoleKey.Escape)
                     {
                         loopProgram = false;
                         break;
@@ -41,6 +42,7 @@ namespace Grafik_Console
                         Banner.DrawTopBanner("Jakub");
                         mainMenu.ListMenu();
                         Console.WriteLine("Provided value was invalid. Please choose one option from the menu.");
+                        pressedKey = Console.ReadKey().Key;
                     }
                 }
             } while (loopProgram);
