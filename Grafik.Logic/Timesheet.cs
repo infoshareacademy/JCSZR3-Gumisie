@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Grafik_Logic
 {
-    class Timesheet
+    public class Timesheet
     {
         private DateTime _getCurrentDateTime = DateTime.Now;
         
