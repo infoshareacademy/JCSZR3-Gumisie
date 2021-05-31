@@ -13,7 +13,7 @@ namespace Grafik_Console
             do
             {
                 i++;
-                if (i>1)
+                if (i > 1)
                 {
                     Console.WriteLine("Wrong credentials. Please press any key and try again.");
                     Console.ReadLine();
@@ -23,31 +23,31 @@ namespace Grafik_Console
                 Login.AskForCredentials();
             } while (!Login.CheckCredentials());
 
+            //display main menu after successful log-in and check user's choice to return a submenu
             do
             {
-                //display main menu after successful log-in
-                Banner.DrawTopBanner("Jakub"); //user name fetched from the database
+                i = 0;
+                ConsoleKey pressedKey = ConsoleKey.Escape;
                 MainMenu mainMenu = new();
-                mainMenu.ListMenu();
-
-                //check user's choice in the main menu and returns the sebmenu
-                var pressedKey = Console.ReadKey().Key;
-                while (!Int32.TryParse(Char.GetNumericValue((char)pressedKey).ToString(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null)
+                do
                 {
-                    if (pressedKey == ConsoleKey.Escape)
+                    i++;
+                    Banner.DrawTopBanner("Jakub"); //user name fetched from the database
+                    mainMenu.ListMenu();
+                    if (i > 1)
                     {
-                        loopProgram = false;
-                        break;
+                        if (pressedKey == ConsoleKey.Escape)
+                        {
+                            loopProgram = false;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Provided value was invalid. Please choose one option from the menu.");
+                        }
                     }
-                    else
-                    {
-                        Console.Clear();
-                        Banner.DrawTopBanner("Jakub");
-                        mainMenu.ListMenu();
-                        Console.WriteLine("Provided value was invalid. Please choose one option from the menu.");
-                        pressedKey = Console.ReadKey().Key;
-                    }
-                }
+                    pressedKey = Console.ReadKey(true).Key;
+                } while (!Int32.TryParse(Char.GetNumericValue((char)pressedKey).ToString(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null);
             } while (loopProgram);
         }
     }
