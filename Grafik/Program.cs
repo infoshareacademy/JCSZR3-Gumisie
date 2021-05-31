@@ -16,7 +16,7 @@ namespace Grafik_Console
                 if (i > 1)
                 {
                     Console.WriteLine("Wrong credentials. Please press any key and try again.");
-                    Console.ReadLine();
+                    Console.ReadKey();
                     Console.Clear();
                 }
                 Banner.DrawTopBanner();
