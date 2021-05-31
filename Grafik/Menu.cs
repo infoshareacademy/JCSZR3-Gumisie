@@ -57,20 +57,14 @@ namespace Grafik_Console
             //    {2,"Submit a new shift request" },
             //    {3,"Submit a new holiday request" },
             //};
-            Banner.DrawTopBanner("Jakub");
-            Console.WriteLine("Please provide a date");
-            var dateChoice = Console.ReadLine();
-            var output = ShiftChecker.CheckShift(dateChoice);
-            Console.WriteLine(output);
-            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            do
             {
                 Banner.DrawTopBanner("Jakub");
                 Console.WriteLine("Please provide a date");
-                dateChoice = Console.ReadLine();
-                output = ShiftChecker.CheckShift(dateChoice);
+                var dateChoice = Console.ReadLine();
+                var output = ShiftChecker.CheckShift(dateChoice);
                 Console.WriteLine(output);
-            }
-
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
