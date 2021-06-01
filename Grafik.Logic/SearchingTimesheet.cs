@@ -13,53 +13,68 @@ namespace Grafik_Logic
 
 
 
-        //public virtual string SearchEmployeeTimeshift(string firstName, string lastName, string emailAdress, int userId)
-        //{
-        //    return null;
-        //}
-
-        public string SearchEmployeeTimeshift(string firstName, string lastName)
+        private Timesheet FindTimesheet(Employee selectedEmployee)
         {
-            foreach (Employee employee in employees)
+            if (selectedEmployee == null)
             {
-                if (employee.FirstName == firstName || employee.LastName == lastName)
+                return null;
+            }
+
+            Timesheet userTimesheet = null;
+
+            foreach (Timesheet timesheet in timesheets)
+            {
+                if (timesheet.Employee.FirstName == selectedEmployee.FirstName && timesheet.Employee.LastName == selectedEmployee.LastName)
                 {
-                    foreach (Timesheet timesheet in timesheets)
-                    {
-                        return $"{timesheet.ID} {timesheet.Employee.FirstName} {timesheet.Employee.LastName}/n {timesheet.WorkingDate} {timesheet.WorkingStartingHour} {timesheet.WorkingEndingHour}";
-                    }
+                    userTimesheet = timesheet;
                 }
             }
-        return $"This person dosen't exist in our database.";
+            return userTimesheet;
         }
 
-        public string SearchEmployeeTimeshift(string emailAdress)
+        public Timesheet SearchEmployeeTimeshift(string firstName, string lastName)
         {
+            Employee selectedEmployee = null;
+
+            foreach (Employee employee in employees)
+            {
+                if (employee.FirstName == firstName && employee.LastName == lastName)
+                {
+                    selectedEmployee = employee;
+                }
+            }
+
+           return FindTimesheet(selectedEmployee);
+        }
+
+        public Timesheet SearchEmployeeTimeshift(string emailAdress)
+        {
+            Employee selectedEmployee = null;
+
             foreach (Employee employee in employees)
             {
                 if (employee.EmailAddress == emailAdress)
                 {
-                    foreach (Timesheet timesheet in timesheets)
-                    {
-                        return $"{timesheet.ID} {timesheet.Employee.FirstName} {timesheet.Employee.LastName}/n {timesheet.WorkingDate} {timesheet.WorkingStartingHour} {timesheet.WorkingEndingHour}";
-                    }
+                    selectedEmployee = employee;
                 }
             }
-            return $"This e-mail dosen't exist in our database.";
+
+            return FindTimesheet(selectedEmployee);
         }
-        public string SearchEmployeeTimeshift(int userId)
+    
+        public Timesheet SearchEmployeeTimeshift(int userId)
         {
+            Employee selectedEmployee = null;
+
             foreach (Employee employee in employees)
             {
-                if (employee.UserId == userId)
+                if (employee.UserId== userId)
                 {
-                    foreach (Timesheet timesheet in timesheets)
-                    {
-                        return $"{timesheet.ID} {timesheet.Employee.FirstName} {timesheet.Employee.LastName}/n {timesheet.WorkingDate} {timesheet.WorkingStartingHour} {timesheet.WorkingEndingHour}";
-                    }
+                    selectedEmployee = employee;
                 }
             }
-            return $"This user ID dosen't exist in our database.";
+
+            return FindTimesheet(selectedEmployee);
         }
 
     }
