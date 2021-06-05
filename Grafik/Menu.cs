@@ -30,14 +30,16 @@ namespace Grafik_Console
         public override Menu CheckMenuChoice(int userChoice) =>
             userChoice switch
             {
-                1 => new CheckMyShiftsSubmenu(),
+                1 => new CheckShiftsSubmenu(),
                 2 => new SubmitNewShiftRequestSubmenu(),
-                3 => new SubmitNewHolidaysRequestSubmenu(),
+                3 => new SubmitNewAbsenceRequestSubmenu(),
+                4 => new CheckDayilyTimeshiftsSubmenu(),
+                5 => new ModifyEmployeesTimeshiftSubmenu(),
                 _ => null
             };
         public override void ListMenu()
         {
-            Console.WriteLine("\nPlease choose one of the options to proceed:");
+            Console.WriteLine("\nPlease choose one of the options to proceed. Press Escape to exit.");
             foreach (KeyValuePair<int, string> item in MenuOptions)
             {
                 Console.WriteLine($"{item.Key}.{item.Value}");
@@ -45,9 +47,9 @@ namespace Grafik_Console
             Console.WriteLine();
         }
     }
-    public class CheckMyShiftsSubmenu : Menu
+    public class CheckShiftsSubmenu : Menu
     {
-        public CheckMyShiftsSubmenu()
+        public CheckShiftsSubmenu()
         {
             //MenuOptions = new Dictionary<int, string>
             //{
@@ -55,42 +57,14 @@ namespace Grafik_Console
             //    {2,"Submit a new shift request" },
             //    {3,"Submit a new holiday request" },
             //};
-            Banner.DrawTopBanner("Jakub");
-            Console.WriteLine("Please provide a date");
-            var dateChoice = Console.ReadLine();
-            var output = ShiftChecker.CheckShift(dateChoice);
-            Console.WriteLine(output);
-            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            do
             {
                 Banner.DrawTopBanner("Jakub");
                 Console.WriteLine("Please provide a date");
-                dateChoice = Console.ReadLine();
-                output = ShiftChecker.CheckShift(dateChoice);
+                var dateChoice = Console.ReadLine();
+                var output = ShiftChecker.CheckShift(dateChoice);
                 Console.WriteLine(output);
-            }
-
-        }
-        protected override Dictionary<int, string> MenuOptions { get; set; }
-        public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class SubmitNewHolidaysRequestSubmenu : Menu
-    {
-        public SubmitNewHolidaysRequestSubmenu()
-        {
-            MenuOptions = new Dictionary<int, string>
-            {
-                {1,"Check my shifts" },
-                {2,"Submit a new shift request" },
-                {3,"Submit a new holiday request" },
-            };
-            Console.WriteLine("Menu 2");
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
@@ -112,6 +86,77 @@ namespace Grafik_Console
                 {2,"Submit a new shift request" },
                 {3,"Submit a new holiday request" },
             };
+            Console.WriteLine("Menu 2");
+            Console.ReadLine();
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class SubmitNewAbsenceRequestSubmenu : Menu
+    {
+        public SubmitNewAbsenceRequestSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+            Console.WriteLine("Menu 3");
+            Console.ReadLine();
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class CheckDayilyTimeshiftsSubmenu : Menu
+    {
+        public CheckDayilyTimeshiftsSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+            Console.WriteLine("Menu 4");
+            Console.ReadLine();
+        }
+        protected override Dictionary<int, string> MenuOptions { get; set; }
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+        public override void ListMenu()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class ModifyEmployeesTimeshiftSubmenu : Menu
+    {
+        public ModifyEmployeesTimeshiftSubmenu()
+        {
+            MenuOptions = new Dictionary<int, string>
+            {
+                {1,"Check my shifts" },
+                {2,"Submit a new shift request" },
+                {3,"Submit a new holiday request" },
+            };
+            Console.WriteLine("Menu 5");
+            Console.ReadLine();
         }
         protected override Dictionary<int, string> MenuOptions { get; set; }
         public override Menu CheckMenuChoice(int userChoice)
