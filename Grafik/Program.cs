@@ -8,7 +8,6 @@ namespace Grafik_Console
         static void Main()
         {
             //application start point
-            bool loopProgram = true;
             var i = 0;
             do
             {
@@ -37,8 +36,7 @@ namespace Grafik_Console
                     {
                         if (pressedKey == ConsoleKey.Escape)
                         {
-                            loopProgram = false;
-                            break;
+                            Environment.Exit(0);
                         }
                         else
                         {
@@ -47,7 +45,7 @@ namespace Grafik_Console
                     }
                     pressedKey = Console.ReadKey(true).Key;
                 } while (!Int32.TryParse(Char.GetNumericValue((char)pressedKey).ToString(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null);
-            } while (loopProgram);
+            } while (true);
         }
     }
 }
