@@ -22,11 +22,12 @@ namespace Grafik_Console
             } while (!Login.CheckCredentials());
 
             //display main menu after successful log-in and check user's choice to return a submenu
+            ConsoleKey pressedKey = ConsoleKey.Escape;
+            MainMenu mainMenu = new();
+
             do
             {
                 i = 0;
-                ConsoleKey pressedKey = ConsoleKey.Escape;
-                MainMenu mainMenu = new();
                 do
                 {
                     i++;
