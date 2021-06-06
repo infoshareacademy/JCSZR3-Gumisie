@@ -1,11 +1,11 @@
 ﻿using System;
-using System.IO;
+using System.Globalization;
 
 namespace Grafik_Console
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             //application start point
             var i = 0;
@@ -17,12 +17,12 @@ namespace Grafik_Console
                     Console.WriteLine("Wrong credentials. Please press any key and try again.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner();
+                Banner.DrawTopBanner(false);
                 Login.AskForCredentials();
             } while (!Login.CheckCredentials());
 
             //display main menu after successful log-in and check user's choice to return a submenu
-            ConsoleKey pressedKey = ConsoleKey.Escape;
+            ConsoleKey pressedKey = default;
             MainMenu mainMenu = new();
 
             do
@@ -31,8 +31,8 @@ namespace Grafik_Console
                 do
                 {
                     i++;
-                    Banner.DrawTopBanner("Jakub"); //user name fetched from the database
-                    mainMenu.ListMenu();
+                    Banner.DrawTopBanner(true);
+                    Menu.ListMenu(mainMenu.MenuOptions);
                     if (i > 1)
                     {
                         if (pressedKey == ConsoleKey.Escape)
@@ -45,7 +45,7 @@ namespace Grafik_Console
                         }
                     }
                     pressedKey = Console.ReadKey(true).Key;
-                } while (!Int32.TryParse(Char.GetNumericValue((char)pressedKey).ToString(), out int userChoice) || mainMenu.CheckMenuChoice(userChoice) == null);
+                } while (!int.TryParse(char.GetNumericValue((char)pressedKey).ToString(CultureInfo.InvariantCulture), out var userChoice) || mainMenu.CheckMenuChoice(userChoice) == null);
             } while (true);
         }
     }
