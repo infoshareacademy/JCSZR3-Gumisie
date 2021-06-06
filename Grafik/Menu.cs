@@ -44,7 +44,7 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner("Jakub");
+                Banner.DrawTopBanner(true);
                 Console.WriteLine("Please provide a date");
                 var dateChoice = Console.ReadLine();
                 var output = ShiftChecker.CheckShift(dateChoice);

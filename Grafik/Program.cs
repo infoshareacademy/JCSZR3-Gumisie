@@ -17,7 +17,7 @@ namespace Grafik_Console
                     Console.WriteLine("Wrong credentials. Please press any key and try again.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner();
+                Banner.DrawTopBanner(false);
                 Login.AskForCredentials();
             } while (!Login.CheckCredentials());
 
@@ -31,7 +31,7 @@ namespace Grafik_Console
                 do
                 {
                     i++;
-                    Banner.DrawTopBanner("Jakub"); //user name fetched from the database
+                    Banner.DrawTopBanner(true);
                     Menu.ListMenu(mainMenu.MenuOptions);
                     if (i > 1)
                     {
