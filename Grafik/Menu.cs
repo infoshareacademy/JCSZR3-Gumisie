@@ -6,11 +6,11 @@ namespace Grafik_Console
 {
     public abstract class Menu
     {
-        public static void ListMenu(Dictionary<int,string> MenuToList)
+        public static void ListMenu(Dictionary<int,string> menuToList)
         {
-            foreach (var menuOption in MenuToList)
+            foreach (var (menuNumber, menuOption) in menuToList)
             {
-                Console.WriteLine($"{menuOption.Key}.{menuOption.Value}");
+                Console.WriteLine($"{menuNumber}.{menuOption}");
             }
         }
         public abstract Dictionary<int, string> MenuOptions { get; }
@@ -67,7 +67,7 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
-        public override Dictionary<int, string> MenuOptions { get; } = new() { };
+        public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
@@ -82,7 +82,7 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
-        public override Dictionary<int, string> MenuOptions { get; } = new() { };
+        public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
@@ -97,7 +97,7 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
-        public override Dictionary<int, string> MenuOptions { get; } = new() { };
+        public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
@@ -112,7 +112,7 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
-        public override Dictionary<int, string> MenuOptions { get; } = new() { };
+        public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
