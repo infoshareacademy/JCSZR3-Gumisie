@@ -32,7 +32,7 @@ namespace Grafik_Console
                 {
                     i++;
                     Banner.DrawTopBanner("Jakub"); //user name fetched from the database
-                    mainMenu.ListMenu();
+                    Menu.ListMenu(mainMenu.MenuOptions);
                     if (i > 1)
                     {
                         if (pressedKey == ConsoleKey.Escape)

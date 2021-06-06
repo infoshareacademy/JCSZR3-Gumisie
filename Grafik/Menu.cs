@@ -6,13 +6,19 @@ namespace Grafik_Console
 {
     public abstract class Menu
     {
-        public abstract void ListMenu();
-        protected abstract Dictionary<int, string> MenuOptions { get; }
+        public static void ListMenu(Dictionary<int,string> MenuToList)
+        {
+            foreach (var menuOption in MenuToList)
+            {
+                Console.WriteLine($"{menuOption.Key}.{menuOption.Value}");
+            }
+        }
+        public abstract Dictionary<int, string> MenuOptions { get; }
         public abstract Menu CheckMenuChoice(int userChoice);
     }
     public class MainMenu : Menu
     {
-        protected override Dictionary<int, string> MenuOptions { get; } = new()
+        public override Dictionary<int, string> MenuOptions { get; } = new()
         {
             {1,"Check shifts" },   //ALL - depending on login 
             {2,"Submit a new shift request" }, //ALL - depending on login 
@@ -31,15 +37,6 @@ namespace Grafik_Console
                 5 => new ModifyEmployeesShiftSubmenu(),
                 _ => null
             };
-        public override void ListMenu()
-        {
-            Console.WriteLine("\nPlease choose one of the options to proceed. Press Escape to exit.");
-            foreach (var (menuNumber, returnedMenu) in MenuOptions)
-            {
-                Console.WriteLine($"{menuNumber}.{returnedMenu}");
-            }
-            Console.WriteLine();
-        }
     }
     public class CheckShiftsSubmenu : Menu
     {
@@ -55,12 +52,8 @@ namespace Grafik_Console
             } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
 
-        protected override Dictionary<int, string> MenuOptions { get; } = new();
+        public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
         {
             throw new NotImplementedException();
         }
@@ -74,12 +67,8 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
-        protected override Dictionary<int, string> MenuOptions { get; } = new() { };
+        public override Dictionary<int, string> MenuOptions { get; } = new() { };
         public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
         {
             throw new NotImplementedException();
         }
@@ -92,12 +81,9 @@ namespace Grafik_Console
             Console.WriteLine("Menu 3");
             Console.ReadLine();
         }
-        protected override Dictionary<int, string> MenuOptions { get; } = new() { };
+
+        public override Dictionary<int, string> MenuOptions { get; } = new() { };
         public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
         {
             throw new NotImplementedException();
         }
@@ -110,12 +96,9 @@ namespace Grafik_Console
             Console.WriteLine("Menu 4");
             Console.ReadLine();
         }
-        protected override Dictionary<int, string> MenuOptions { get; } = new() { };
+
+        public override Dictionary<int, string> MenuOptions { get; } = new() { };
         public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
         {
             throw new NotImplementedException();
         }
@@ -128,12 +111,9 @@ namespace Grafik_Console
             Console.WriteLine("Menu 5");
             Console.ReadLine();
         }
-        protected override Dictionary<int, string> MenuOptions { get; } = new() { };
+
+        public override Dictionary<int, string> MenuOptions { get; } = new() { };
         public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-        public override void ListMenu()
         {
             throw new NotImplementedException();
         }
