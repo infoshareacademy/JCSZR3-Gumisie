@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Grafik_Console
 {
-    static class Banner
+    internal static class Banner
     {
         public static void DrawTopBanner()
         {
