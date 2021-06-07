@@ -25,6 +25,9 @@ namespace Grafik_Console
             {3,"Submit a absence request" },  //ALL - depending on login
             {4,"Check daily shifts" }, //ALL - whole team's shifts
             {5,"Modify employee's shift" }, //Manager's only
+            {6,"Add new user" }, //Manager's only
+            {7, "Exit" }
+
         };
 
         public override Menu CheckMenuChoice(int userChoice) =>
@@ -35,6 +38,8 @@ namespace Grafik_Console
                 3 => new SubmitNewAbsenceRequestSubmenu(),
                 4 => new CheckDailyShiftsSubmenu(),
                 5 => new ModifyEmployeesShiftSubmenu(),
+                6 => new AddNewUserSubmenu(),
+                7 => new ExitMenu(),
                 _ => null
             };
     }
@@ -112,6 +117,34 @@ namespace Grafik_Console
             Console.ReadLine();
         }
 
+        public override Dictionary<int, string> MenuOptions { get; } = new();
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class AddNewUserSubmenu : Menu {
+
+        public AddNewUserSubmenu()
+        {
+            Console.WriteLine("Menu 6");
+            Console.ReadLine();
+        }
+        public override Dictionary<int, string> MenuOptions { get; } = new();
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ExitMenu : Menu
+    {
+
+        public ExitMenu()
+        {
+            Environment.Exit(0);
+        }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {

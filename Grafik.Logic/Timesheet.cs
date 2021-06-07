@@ -30,12 +30,20 @@ namespace Grafik_Logic
             WorkingStartingHour = startingHourShift;
             WorkingEndingHour = endingHoursShift;
         }
+
+        // possible methods
         public void getDate() {
             DateTime dateTime = DateTime.Now;
         }
         public int getDayOfTheWeek(DateTime date) {
             return default;
         }
-        public int calcaulteHoursForShift(int start, int end) => DayWorkingHours = end - start;
+       public int calculateHoursForShift(int start, int end) => DayWorkingHours = end - start;
+
+        
+        public List<Timesheet> allRecords()
+        {
+            return default;
+        }
     }
 }
