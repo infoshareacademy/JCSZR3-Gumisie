@@ -8,9 +8,10 @@ namespace Grafik_Logic
 {
     class Timesheet
     {
+        
         private DateTime _getCurrentDateTime = DateTime.Now;
         
-        public int ID { get; set; }
+        public int ID { get ; set;}
         public Employee Employee { get; set; }
         public DateTime WorkingDate { get; set; } // working date
         private DateTime Day { get; set; } // store days of the week in case working in weekdays

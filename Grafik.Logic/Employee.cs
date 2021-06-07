@@ -6,18 +6,17 @@ namespace Grafik_Logic
     public class Employee
     {
         
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
-        public string EmailAddress { get; set; }
-
+        //public string FirstName { get; set; }
+       // public string LastName { get; set; }
+       
         
-        public Employee(string firstName, string lastName, int phoneNumber, string emailAdress)
+        public Employee(string firstName, string lastName, string phoneNumber, string emailAdress)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            PhoneNumber = phoneNumber;
-            EmailAddress = emailAdress;
+            Name newUser = new Name();
+            newUser.First = firstName;
+            newUser.Last = lastName;
+            Phone = phoneNumber;
+            Email = emailAdress;
         }
 
        

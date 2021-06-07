@@ -136,12 +136,16 @@ namespace Grafik_Console
             Console.WriteLine("Podaj email: ");
             string email = Console.ReadLine();
             Console.WriteLine("Podaj telefon: ");
-            int phone = Convert.ToInt32(Console.ReadLine());
+            string phone = Console.ReadLine();
             Console.WriteLine($"{ first_name } { last_name} { email } {phone}" );
             Console.ReadKey();
-            Employee newUser = new Employee(first_name, last_name, phone, email);
+            Employee newUser = new(first_name, last_name, phone, email);
+            string fileName = "Employees.json";
             var path = @"E:\Projects\Grafik\JCSZR3-Gumisie\Grafik.Logic\JSON Files\Employees.json";
-            string json = File.ReadAllText(path);
+            var path1 = Path.Combine(Environment.CurrentDirectory, @"JSON Files", fileName);
+            Console.WriteLine(path);
+            Console.WriteLine(path1);
+            string json = File.ReadAllText(path1);
             List<Employee> listOfEmployees = JsonConvert.DeserializeObject<List<Employee>>(json);
             bool ifUserExist = false;
             foreach (var item in listOfEmployees)
@@ -154,7 +158,10 @@ namespace Grafik_Console
                 listOfEmployees.Add(newUser);
                var newJson = JsonConvert.SerializeObject(listOfEmployees);
                 File.WriteAllText(path, newJson);
-            }
+                Console.WriteLine("Nowy uzytkownik zostal dodany!") ;
+            }else
+                Console.WriteLine("Użytkownik z takim adresem email juz istnieje!");
+            Console.ReadKey();
             
 
         }
