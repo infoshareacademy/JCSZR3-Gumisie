@@ -20,6 +20,8 @@ namespace Grafik_Logic
             EmailAddress = emailAdress;
         }
 
+       
+
         [JsonProperty("gender")]
         public Gender Gender { get; set; }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Grafik_Logic;
+using Newtonsoft.Json;
 
 namespace Grafik_Console
 {
@@ -26,8 +28,6 @@ namespace Grafik_Console
             {4,"Check daily shifts" }, //ALL - whole team's shifts
             {5,"Modify employee's shift" }, //Manager's only
             {6,"Add new user" }, //Manager's only
-            {7, "Exit" }
-
         };
 
         public override Menu CheckMenuChoice(int userChoice) =>
@@ -39,7 +39,6 @@ namespace Grafik_Console
                 4 => new CheckDailyShiftsSubmenu(),
                 5 => new ModifyEmployeesShiftSubmenu(),
                 6 => new AddNewUserSubmenu(),
-                7 => new ExitMenu(),
                 _ => null
             };
     }
@@ -129,7 +128,35 @@ namespace Grafik_Console
         public AddNewUserSubmenu()
         {
             Console.WriteLine("Menu 6");
-            Console.ReadLine();
+            Console.WriteLine("Poniższe dane są wymagane:");
+            Console.WriteLine("Podaj imie: ");
+            string first_name = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko: ");
+            string last_name = Console.ReadLine();
+            Console.WriteLine("Podaj email: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("Podaj telefon: ");
+            int phone = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"{ first_name } { last_name} { email } {phone}" );
+            Console.ReadKey();
+            Employee newUser = new Employee(first_name, last_name, phone, email);
+            var path = @"E:\Projects\Grafik\JCSZR3-Gumisie\Grafik.Logic\JSON Files\Employees.json";
+            string json = File.ReadAllText(path);
+            List<Employee> listOfEmployees = JsonConvert.DeserializeObject<List<Employee>>(json);
+            bool ifUserExist = false;
+            foreach (var item in listOfEmployees)
+            {
+                if (item.Email == newUser.Email) {
+                    ifUserExist = true;
+                }
+            }
+            if (!ifUserExist) {
+                listOfEmployees.Add(newUser);
+               var newJson = JsonConvert.SerializeObject(listOfEmployees);
+                File.WriteAllText(path, newJson);
+            }
+            
+
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
@@ -138,17 +165,5 @@ namespace Grafik_Console
         }
     }
 
-    public class ExitMenu : Menu
-    {
-
-        public ExitMenu()
-        {
-            Environment.Exit(0);
-        }
-        public override Dictionary<int, string> MenuOptions { get; } = new();
-        public override Menu CheckMenuChoice(int userChoice)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    
 }
