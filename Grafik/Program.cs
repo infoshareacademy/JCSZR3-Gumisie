@@ -9,7 +9,7 @@ namespace Grafik_Console
         private static void Main()
         {
             //application start point - loading employees list from JSON
-            JSONHelper.LoadEmployeesJson();
+            JsonHelper.LoadEmployeesJson();
 
             var i = 0;
             do

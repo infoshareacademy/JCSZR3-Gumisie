@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace Grafik_Logic
 {
-    public static class JSONHelper
+    public static class JsonHelper
     {
         public static List<Employee> Employees;
-        private const string path = @"JSON Files\Employees.json";
+        private const string Path = @"JSON Files\Employees.json";
 
         public static void LoadEmployeesJson()
         {
-            var json = File.ReadAllText(path);
+            var json = File.ReadAllText(Path);
             Employees = JsonConvert.DeserializeObject<List<Employee>>(json);
         }
 
@@ -23,10 +21,9 @@ namespace Grafik_Logic
         {
             Employees.Add(employee);
             var newJson = JsonConvert.SerializeObject(Employees);
-            File.WriteAllText(path, newJson);
+            File.WriteAllText(Path, newJson);
             Console.WriteLine("User added successfully to the database.");
         }
-
         public static void ListAllUsers()
         {
             foreach (var employee in Employees)

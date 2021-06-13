@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Grafik_Logic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace Grafik_Console
 {
@@ -66,7 +65,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            JSONHelper.ListAllUsers();
+            Console.WriteLine("Menu 3");
             Console.ReadLine();
         }
 
@@ -99,7 +98,6 @@ namespace Grafik_Console
             Console.WriteLine("Menu 4");
             Console.ReadLine();
         }
-
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
@@ -114,7 +112,6 @@ namespace Grafik_Console
             Console.WriteLine("Menu 5");
             Console.ReadLine();
         }
-
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
@@ -132,7 +129,7 @@ namespace Grafik_Console
                 var newUser = GetPersonalDataToCreateNewEmployee();
                 if (newUser != null)
                 {
-                    JSONHelper.SaveEmployeeToJson(newUser);
+                    JsonHelper.SaveEmployeeToJson(newUser);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
@@ -145,7 +142,7 @@ namespace Grafik_Console
         {
             var email = ValidateEmployeesData("e-mail");
 
-            if (JSONHelper.CheckIfUserExistsInDatabase(email))
+            if (JsonHelper.CheckIfUserExistsInDatabase(email))
             {
                 Console.WriteLine("User with provided e-mail address already exists in the database. Press Escape to go back or any other key to retry.");
                 return null;

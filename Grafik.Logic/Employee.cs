@@ -5,22 +5,13 @@ namespace Grafik_Logic
 {
     public class Employee
     {
-        
-        //public string FirstName { get; set; }
-       // public string LastName { get; set; }
-       
-        
         public Employee(string firstName, string lastName, string phoneNumber, string emailAdress)
         {
-            Name newUser = new Name();
-            newUser.First = firstName;
-            newUser.Last = lastName;
+            var newUser = new Name {First = firstName, Last = lastName};
             Phone = phoneNumber;
             Email = emailAdress;
         }
-
-       
-
+        
         [JsonProperty("gender")]
         public Gender Gender { get; set; }
 
@@ -57,8 +48,7 @@ namespace Grafik_Logic
         [JsonProperty("nat")]
         public string Nat { get; set; }
     }
-
-    public partial class Dob
+    public class Dob
     {
         [JsonProperty("date")]
         public DateTimeOffset Date { get; set; }
@@ -66,8 +56,7 @@ namespace Grafik_Logic
         [JsonProperty("age")]
         public long Age { get; set; }
     }
-
-    public partial class Id
+    public class Id
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -75,8 +64,7 @@ namespace Grafik_Logic
         [JsonProperty("value")]
         public string Value { get; set; }
     }
-
-    public partial class Location
+    public class Location
     {
         [JsonProperty("street")]
         public Street Street { get; set; }
@@ -99,8 +87,7 @@ namespace Grafik_Logic
         [JsonProperty("timezone")]
         public Timezone Timezone { get; set; }
     }
-
-    public partial class Coordinates
+    public class Coordinates
     {
         [JsonProperty("latitude")]
         public string Latitude { get; set; }
@@ -108,8 +95,7 @@ namespace Grafik_Logic
         [JsonProperty("longitude")]
         public string Longitude { get; set; }
     }
-
-    public partial class Street
+    public class Street
     {
         [JsonProperty("number")]
         public long Number { get; set; }
@@ -117,8 +103,7 @@ namespace Grafik_Logic
         [JsonProperty("name")]
         public string Name { get; set; }
     }
-
-    public partial class Timezone
+    public class Timezone
     {
         [JsonProperty("offset")]
         public string Offset { get; set; }
@@ -126,8 +111,7 @@ namespace Grafik_Logic
         [JsonProperty("description")]
         public string Description { get; set; }
     }
-
-    public partial class Login
+    public class Login
     {
         [JsonProperty("uuid")]
         public Guid Uuid { get; set; }
@@ -151,7 +135,7 @@ namespace Grafik_Logic
         public string Sha256 { get; set; }
     }
 
-    public partial class Name
+    public class Name
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -163,7 +147,7 @@ namespace Grafik_Logic
         public string Last { get; set; }
     }
 
-    public partial class Picture
+    public class Picture
     {
         [JsonProperty("large")]
         public Uri Large { get; set; }
@@ -174,7 +158,6 @@ namespace Grafik_Logic
         [JsonProperty("thumbnail")]
         public Uri Thumbnail { get; set; }
     }
-
     public enum Gender { Female, Male };
 }
 
