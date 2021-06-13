@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Grafik_Logic;
-using Newtonsoft.Json;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace Grafik_Console
 {
@@ -125,7 +124,6 @@ namespace Grafik_Console
 
     public class AddNewUserSubmenu : Menu
     {
-
         public AddNewUserSubmenu()
         {
             do
@@ -143,26 +141,38 @@ namespace Grafik_Console
         {
             throw new NotImplementedException();
         }
-
         private static Employee GetPersonalDataToCreateNewEmployee()
         {
-            Console.WriteLine("Please provide the e-mail");
-            var email = Console.ReadLine();
+            var email = ValidateEmployeesData("e-mail");
+
             if (JSONHelper.CheckIfUserExistsInDatabase(email))
             {
                 Console.WriteLine("User with provided e-mail address already exists in the database. Press Escape to go back or any other key to retry.");
                 return null;
             }
-            Console.WriteLine("Please provide the first name:");
-            var firstName = Console.ReadLine();
-            Console.WriteLine("Please provide the last name:");
-            var lastName = Console.ReadLine();
-            Console.WriteLine("Please provide the phone number");
-            var phone = Console.ReadLine();
+
+            var firstName = ValidateEmployeesData("first name");
+            var lastName = ValidateEmployeesData("last name");
+            var phone = ValidateEmployeesData("phone number");
             return new Employee(firstName, lastName, phone, email);
         }
-
+        private static string ValidateEmployeesData(string dataName)
+        {
+            string input;
+            var i = 0;
+            do
+            {
+                i++;
+                if (i>1)
+                {
+                    Console.WriteLine($"Provided {dataName} cannot be empty.");
+                    Console.ReadKey();
+                }
+                Banner.DrawTopBanner(true);
+                Console.WriteLine($"Please provide the {dataName}");
+                input = Console.ReadLine();  
+            } while (string.IsNullOrWhiteSpace(input));
+            return input;
+        }
     }
-
-
 }
