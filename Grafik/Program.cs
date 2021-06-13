@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Grafik_Logic;
 
 namespace Grafik_Console
 {
@@ -7,7 +8,9 @@ namespace Grafik_Console
     {
         private static void Main()
         {
-            //application start point
+            //application start point - loading employees list from JSON
+            JSONHelper.LoadEmployeesJson();
+
             var i = 0;
             do
             {
