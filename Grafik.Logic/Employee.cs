@@ -5,11 +5,11 @@ namespace Grafik_Logic
 {
     public class Employee
     {
-        public Employee(string firstName, string lastName, string phoneNumber, string emailAdress)
+        public Employee(string firstName, string lastName, string phoneNumber, string emailAddress)
         {
             var newUser = new Name {First = firstName, Last = lastName};
             Phone = phoneNumber;
-            Email = emailAdress;
+            Email = emailAddress;
         }
         
         [JsonProperty("gender")]
