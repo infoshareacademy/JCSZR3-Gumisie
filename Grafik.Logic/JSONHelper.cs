@@ -26,6 +26,14 @@ namespace Grafik_Logic
             File.WriteAllText(path, newJson);
             Console.WriteLine("User added successfully to the database.");
         }
+
+        public static void ListAllUsers()
+        {
+            foreach (var employee in Employees)
+            {
+                Console.WriteLine(employee.Email);
+            }
+        }
         public static bool CheckIfUserExistsInDatabase(string email)=> Employees.Any(e => e.Email == email);
     }
 }

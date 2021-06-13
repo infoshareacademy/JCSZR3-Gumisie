@@ -27,7 +27,7 @@ namespace Grafik_Console
             { 3, "Submit a absence request" },  //ALL - depending on login
             { 4, "Check daily shifts" }, //ALL - whole team's shifts
             { 5, "Modify employee's shift" }, //Manager's only
-            { 6, "Add new user" }, //Manager's only
+            { 6, "Add a new user" }, //Manager's only
         };
 
         public override Menu CheckMenuChoice(int userChoice) =>
@@ -67,7 +67,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 2");
+            JSONHelper.ListAllUsers();
             Console.ReadLine();
         }
 
