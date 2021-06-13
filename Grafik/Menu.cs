@@ -95,27 +95,16 @@ namespace Grafik_Console
 
     public class CheckDailyShiftsSubmenu : Menu
     {
-        public CheckDailyShifts()
+        public CheckDailyShiftsSubmenu()
         {
-            Console.WriteLine("Wpisz datę");
-            var shiftdate = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Menu 4");
+            Console.ReadLine();
+        }
 
-
-            private Timesheet FindTimesheetDate(DateTime ShiftDate, int EmployeeId)
-            {
-
-                foreach (DateTime ShiftDate in Employees)
-                {
-                    if (employee.ShiftDate == shiftdate)
-                    {
-                        Console.WriteLine(EmployeeId, shiftdate);
-                    }
-                }
-
-                return FindTimesheet(selectedDate);
-
-            }
-
+        public override Dictionary<int, string> MenuOptions { get; } = new();
+        public override Menu CheckMenuChoice(int userChoice)
+        {
+            throw new NotImplementedException();
         }
     }
 
