@@ -131,34 +131,37 @@ namespace Grafik_Console
             do
             {
                 Banner.DrawTopBanner(true);
-
-                Console.WriteLine("Please provide the e-mail");
-                var email = Console.ReadLine();
-
-                if (JSONHelper.CheckIfUserExistsInDatabase(email))
+                var newUser = GetPersonalDataToCreateNewEmployee();
+                if (newUser != null)
                 {
-                    Console.WriteLine("User with provided e-mail address already exists in the database. Press any key");
+                    JSONHelper.SaveEmployeeToJson(newUser);
                 }
-                else
-                {
-                    Console.WriteLine("Please provide the first name:");
-                    var firstName = Console.ReadLine();
-                    Console.WriteLine("Please provide the last name:");
-                    var lastName = Console.ReadLine();
-                    Console.WriteLine("Please provide the phone number");
-                    var phone = Console.ReadLine();
-                    Console.WriteLine($"{ firstName } { lastName} { email } {phone}");
-                    Console.ReadKey();
-                    Employee newUser = new(firstName, lastName, phone, email);
-                    JSONHelper.SaveEmployeeToJson(newUser);  
-                }
-            } while (Console.ReadKey().Key != ConsoleKey.Escape);
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
         }
+
+        private static Employee GetPersonalDataToCreateNewEmployee()
+        {
+            Console.WriteLine("Please provide the e-mail");
+            var email = Console.ReadLine();
+            if (JSONHelper.CheckIfUserExistsInDatabase(email))
+            {
+                Console.WriteLine("User with provided e-mail address already exists in the database. Press Escape to go back or any other key to retry.");
+                return null;
+            }
+            Console.WriteLine("Please provide the first name:");
+            var firstName = Console.ReadLine();
+            Console.WriteLine("Please provide the last name:");
+            var lastName = Console.ReadLine();
+            Console.WriteLine("Please provide the phone number");
+            var phone = Console.ReadLine();
+            return new Employee(firstName, lastName, phone, email);
+        }
+
     }
 
 

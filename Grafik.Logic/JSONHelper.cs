@@ -11,10 +11,10 @@ namespace Grafik_Logic
     public static class JSONHelper
     {
         public static List<Employee> Employees;
-        private static string path = @"JSON Files\Employees.json";
+        private const string path = @"JSON Files\Employees.json";
+
         public static void LoadEmployeesJson()
         {
-            Console.WriteLine(path);
             var json = File.ReadAllText(path);
             Employees = JsonConvert.DeserializeObject<List<Employee>>(json);
         }
@@ -24,6 +24,7 @@ namespace Grafik_Logic
             Employees.Add(employee);
             var newJson = JsonConvert.SerializeObject(Employees);
             File.WriteAllText(path, newJson);
+            Console.WriteLine("User added successfully to the database.");
         }
         public static bool CheckIfUserExistsInDatabase(string email)=> Employees.Any(e => e.Email == email);
     }
