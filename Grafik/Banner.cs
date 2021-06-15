@@ -14,6 +14,7 @@ namespace Grafik_Console
             {
                 Console.WriteLine($"Welcome, {"Jakub"}                 {DateTime.Now.ToShortDateString()}");  
             }
+            Console.WriteLine();
         }
     }
 }

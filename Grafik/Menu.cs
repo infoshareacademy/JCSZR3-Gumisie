@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Grafik_Logic;
-using Newtonsoft.Json;
 
 namespace Grafik_Console
 {
     public abstract class Menu
     {
-        public static void ListMenu(Dictionary<int,string> menuToList)
+        public static void ListMenu(Dictionary<int, string> menuToList)
         {
             foreach (var (menuNumber, menuOption) in menuToList)
             {
@@ -22,12 +20,12 @@ namespace Grafik_Console
     {
         public override Dictionary<int, string> MenuOptions { get; } = new()
         {
-            {1,"Check shifts" },   //ALL - depending on login 
-            {2,"Submit a new shift request" }, //ALL - depending on login 
-            {3,"Submit a absence request" },  //ALL - depending on login
-            {4,"Check daily shifts" }, //ALL - whole team's shifts
-            {5,"Modify employee's shift" }, //Manager's only
-            {6,"Add new user" }, //Manager's only
+            { 1, "Check shifts" },   //ALL - depending on login 
+            { 2, "Submit a new shift request" }, //ALL - depending on login 
+            { 3, "Submit a absence request" },  //ALL - depending on login
+            { 4, "Check daily shifts" }, //ALL - whole team's shifts
+            { 5, "Modify employee's shift" }, //Manager's only
+            { 6, "Add a new user" }, //Manager's only
         };
 
         public override Menu CheckMenuChoice(int userChoice) =>
@@ -67,7 +65,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 2");
+            Console.WriteLine("Menu 3");
             Console.ReadLine();
         }
 
@@ -100,7 +98,6 @@ namespace Grafik_Console
             Console.WriteLine("Menu 4");
             Console.ReadLine();
         }
-
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
@@ -115,7 +112,6 @@ namespace Grafik_Console
             Console.WriteLine("Menu 5");
             Console.ReadLine();
         }
-
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
@@ -123,54 +119,57 @@ namespace Grafik_Console
         }
     }
 
-    public class AddNewUserSubmenu : Menu {
-
+    public class AddNewUserSubmenu : Menu
+    {
         public AddNewUserSubmenu()
         {
-            Console.WriteLine("Menu 6");
-            Console.WriteLine("Poniższe dane są wymagane:");
-            Console.WriteLine("Podaj imie: ");
-            string first_name = Console.ReadLine();
-            Console.WriteLine("Podaj nazwisko: ");
-            string last_name = Console.ReadLine();
-            Console.WriteLine("Podaj email: ");
-            string email = Console.ReadLine();
-            Console.WriteLine("Podaj telefon: ");
-            string phone = Console.ReadLine();
-            Console.WriteLine($"{ first_name } { last_name} { email } {phone}" );
-            Console.ReadKey();
-            Employee newUser = new(first_name, last_name, phone, email);
-            string fileName = "Employees.json";
-            var path = @"E:\Projects\Grafik\JCSZR3-Gumisie\Grafik.Logic\JSON Files\Employees.json";
-            var path1 = Path.Combine(Environment.CurrentDirectory, @"JSON Files", fileName);
-            Console.WriteLine(path);
-            Console.WriteLine(path1);
-            string json = File.ReadAllText(path1);
-            List<Employee> listOfEmployees = JsonConvert.DeserializeObject<List<Employee>>(json);
-            bool ifUserExist = false;
-            foreach (var item in listOfEmployees)
+            do
             {
-                if (item.Email == newUser.Email) {
-                    ifUserExist = true;
+                Banner.DrawTopBanner(true);
+                var newUser = GetPersonalDataToCreateNewEmployee();
+                if (newUser != null)
+                {
+                    JsonHelper.SaveEmployeeToJson(newUser);
                 }
-            }
-            if (!ifUserExist) {
-                listOfEmployees.Add(newUser);
-               var newJson = JsonConvert.SerializeObject(listOfEmployees);
-                File.WriteAllText(path, newJson);
-                Console.WriteLine("Nowy uzytkownik zostal dodany!") ;
-            }else
-                Console.WriteLine("Użytkownik z takim adresem email juz istnieje!");
-            Console.ReadKey();
-            
-
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
         }
-    }
+        private static Employee GetPersonalDataToCreateNewEmployee()
+        {
+            var email = ValidateEmployeesData("e-mail");
 
-    
+            if (JsonHelper.CheckIfUserExistsInDatabase(email))
+            {
+                Console.WriteLine("User with provided e-mail address already exists in the database. Press Escape to go back or any other key to retry.");
+                return null;
+            }
+
+            var firstName = ValidateEmployeesData("first name");
+            var lastName = ValidateEmployeesData("last name");
+            var phone = ValidateEmployeesData("phone number");
+            return new Employee(firstName, lastName, phone, email);
+        }
+        private static string ValidateEmployeesData(string dataName)
+        {
+            string input;
+            var i = 0;
+            do
+            {
+                i++;
+                if (i>1)
+                {
+                    Console.WriteLine($"Provided {dataName} cannot be empty.");
+                    Console.ReadKey();
+                }
+                Banner.DrawTopBanner(true);
+                Console.WriteLine($"Please provide the {dataName}");
+                input = Console.ReadLine();  
+            } while (string.IsNullOrWhiteSpace(input));
+            return input;
+        }
+    }
 }
