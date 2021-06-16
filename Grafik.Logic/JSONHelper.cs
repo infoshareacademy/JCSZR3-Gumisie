@@ -42,10 +42,5 @@ namespace Grafik_Logic
             
 
         }
-
-        
-        
-  
-
     }
 }

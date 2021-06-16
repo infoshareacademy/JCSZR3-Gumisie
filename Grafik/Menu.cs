@@ -144,7 +144,7 @@ namespace Grafik_Console
                 Console.ReadLine();
             }
 
-            
+
 
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
