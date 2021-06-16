@@ -8,7 +8,7 @@ namespace Grafik_Logic
 {
     public static class JsonHelper
     {
-        public static List<Employee> Employees = new List<Employee>();
+        public static List<Employee> Employees;
         private const string Path = @"JSON Files\Employees.json";
 
         public static void LoadEmployeesJson()

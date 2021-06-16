@@ -82,6 +82,8 @@ namespace Grafik_Console
         public SubmitNewAbsenceRequestSubmenu()
         {
             Console.WriteLine("Menu 3");
+
+            JsonHelper.ListAllUsers();
             Console.ReadLine();
         }
 
@@ -102,17 +104,17 @@ namespace Grafik_Console
 
             if (EmployeeEmail != null)
             {
-                var searchedEmployee = JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail));
+                //var searchedEmployee = JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail));
 
-                foreach (var employee in searchedEmployee)
+                foreach (var employee in JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail)))
                 {
                     Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
 
                 }
-                Console.ReadLine();
-            }
 
-            
+            }
+            Console.ReadLine();
+
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
@@ -130,15 +132,19 @@ namespace Grafik_Console
             Console.WriteLine("Wpisz Narodowośc:");
             string Employeeationality = (Console.ReadLine());
 
-
-            var searchedEmployeeNat = JsonHelper.Employees.Where(x => x.Email.Contains(Employeeationality));
-
-            foreach (var employee in searchedEmployeeNat)
+            if (Employeeationality != null)
             {
-                Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+                var searchedEmployeeNat = JsonHelper.Employees.Where(x => x.Email.Contains(Employeeationality));
 
+                foreach (var employee in searchedEmployeeNat)
+                {
+                    Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+
+                }
+                Console.ReadLine();
             }
-            Console.ReadLine();
+
+            
 
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
@@ -190,16 +196,20 @@ namespace Grafik_Console
             do
             {
                 i++;
-                if (i>1)
+                if (i > 1)
                 {
                     Console.WriteLine($"Provided {dataName} cannot be empty.");
                     Console.ReadKey();
                 }
                 Banner.DrawTopBanner(true);
                 Console.WriteLine($"Please provide the {dataName}");
-                input = Console.ReadLine();  
+                input = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(input));
             return input;
         }
     }
+
+
+
+
 }
