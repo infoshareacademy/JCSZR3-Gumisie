@@ -10,10 +10,8 @@ namespace Grafik_Console
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("|        APPLICATION NAME         |");
             Console.WriteLine("-----------------------------------\n");
-            if (loggedIn)
-            {
-                Console.WriteLine($"Welcome, {"Jakub"}                 {DateTime.Now.ToShortDateString()}");  
-            }
+            if (!loggedIn) return;
+            Console.WriteLine($"Welcome, {"Jakub"}                 {DateTime.Now.ToShortDateString()}");
             Console.WriteLine();
         }
     }
