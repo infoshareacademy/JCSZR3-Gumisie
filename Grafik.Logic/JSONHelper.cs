@@ -23,7 +23,7 @@ namespace Grafik_Logic
             Console.WriteLine("User added successfully to the database. Press Esc to go back or any other key to add a new user.");
         }
         public static void SaveEmployeesListToJson()
-        {
+        {                                                         
             var newJson = JsonConvert.SerializeObject(_employees);
             File.WriteAllText(Path, newJson);
         }
@@ -31,7 +31,7 @@ namespace Grafik_Logic
         {
             foreach (var employee in _employees)
             {
-                Console.WriteLine(employee.Email);
+                Console.WriteLine($"{employee.Email} {employee.Name.First} {employee.Name.Last} {employee.Gender}");
             }
         }
         public static bool CheckIfUserExistsInDatabase(string email)=> _employees.Any(e => e.Email == email);
