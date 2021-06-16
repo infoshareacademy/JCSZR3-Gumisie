@@ -65,7 +65,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 3");
+            Console.WriteLine("Menu 2");
             Console.ReadLine();
         }
 
