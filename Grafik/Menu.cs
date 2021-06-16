@@ -109,10 +109,10 @@ namespace Grafik_Console
                     Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
 
                 }
-
+                Console.ReadLine();
             }
 
-            Console.ReadLine();
+            
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
@@ -146,6 +146,7 @@ namespace Grafik_Console
         {
             throw new NotImplementedException();
         }
+
     }
 
     public class AddNewUserSubmenu : Menu
