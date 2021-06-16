@@ -100,12 +100,15 @@ namespace Grafik_Console
             Console.WriteLine("Wpisz Email pracownika");
             string EmployeeEmail = (Console.ReadLine());
 
-
-            var searchedEmployee = JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail));
-
-            foreach (var employee in searchedEmployee)
+            if (EmployeeEmail != null)
             {
-                Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+                var searchedEmployee = JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail));
+
+                foreach (var employee in searchedEmployee)
+                {
+                    Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+
+                }
 
             }
 
