@@ -109,25 +109,6 @@ namespace Grafik_Console
 
             }
 
-            //var searchedEmployee = Employee.Where(x => x.Email.Contains(EmployeeEmail)).ToList();
-
-            //public static bool CheckIfUserExistsInDatabase(string email)=> Employees.Any(e => e.Email == email);
-
-            //var searchedEmployee = from Employee in Employee
-            //                       where Employee.Email == EmployeeEmail
-            //                       select Employee.Firstname;
-
-
-            //if (JsonHelper.CheckIfUserExistsInDatabase(string Email))
-
-
-            //JsonHelper.ListAllUsers();
-
-
-
-
-
-
             Console.ReadLine();
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
@@ -138,7 +119,6 @@ namespace Grafik_Console
     }
 
 
-    //------------------------------------------------------------------------------------------------------------------------------------
     public class FindEmployeeByNationalitySubmenu : Menu
     {
         public FindEmployeeByNationalitySubmenu()
@@ -155,6 +135,8 @@ namespace Grafik_Console
                 Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
 
             }
+            Console.ReadLine();
+
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
