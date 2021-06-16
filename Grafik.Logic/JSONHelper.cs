@@ -8,7 +8,7 @@ namespace Grafik_Logic
 {
     public static class JsonHelper
     {
-        public static List<Employee> Employees;
+        public static List<Employee> Employees = new List<Employee>();
         private const string Path = @"JSON Files\Employees.json";
 
         public static void LoadEmployeesJson()
@@ -31,6 +31,21 @@ namespace Grafik_Logic
                 Console.WriteLine(employee.Email);
             }
         }
-        public static bool CheckIfUserExistsInDatabase(string email)=> Employees.Any(e => e.Email == email);
+        public static bool CheckIfUserExistsInDatabase(string email) => Employees.Any(e => e.Email == email);
+
+        public static void ListOfEmployees()
+        {
+            foreach (var employee in Employees)
+            {
+                Console.WriteLine(employee.Email);
+            }
+            
+
+        }
+
+        
+        
+  
+
     }
 }
