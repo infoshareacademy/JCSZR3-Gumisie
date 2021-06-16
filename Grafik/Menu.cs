@@ -129,7 +129,7 @@ namespace Grafik_Console
                 var newUser = GetPersonalDataToCreateNewEmployee();
                 if (newUser != null)
                 {
-                    JsonHelper.SaveEmployeeToJson(newUser);
+                    JsonHelper.AddNewEmployeeToEmployeesList(newUser);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
