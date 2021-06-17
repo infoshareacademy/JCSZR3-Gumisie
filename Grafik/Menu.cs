@@ -46,7 +46,7 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner(true);
+                Banner.DrawTopBanner(true,"Check Shifts");
                 Console.WriteLine("Please provide a date");
                 var dateChoice = Console.ReadLine();
                 var output = ShiftChecker.CheckShift(dateChoice);
@@ -65,7 +65,9 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 3");
+            Banner.DrawTopBanner(true,"Submit New Shift Request");
+            //Console.WriteLine("Menu 2");
+            JsonHelper.ListAllUsers();
             Console.ReadLine();
         }
 
@@ -80,6 +82,7 @@ namespace Grafik_Console
     {
         public SubmitNewAbsenceRequestSubmenu()
         {
+            Banner.DrawTopBanner(true,"Submit New Absence Request");
             Console.WriteLine("Menu 3");
             Console.ReadLine();
         }
@@ -95,6 +98,7 @@ namespace Grafik_Console
     {
         public CheckDailyShiftsSubmenu()
         {
+            Banner.DrawTopBanner(true,"Check Daily Shifts");
             Console.WriteLine("Menu 4");
             Console.ReadLine();
         }
@@ -109,6 +113,7 @@ namespace Grafik_Console
     {
         public ModifyEmployeesShiftSubmenu()
         {
+            Banner.DrawTopBanner(true,"Modify Employees Shift");
             Console.WriteLine("Menu 5");
             Console.ReadLine();
         }
@@ -125,11 +130,10 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner(true);
                 var newUser = GetPersonalDataToCreateNewEmployee();
                 if (newUser != null)
                 {
-                    JsonHelper.SaveEmployeeToJson(newUser);
+                    JsonHelper.AddNewEmployeeToEmployeesList(newUser);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
@@ -165,7 +169,7 @@ namespace Grafik_Console
                     Console.WriteLine($"Provided {dataName} cannot be empty.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner(true);
+                Banner.DrawTopBanner(true,"Add New Employee");
                 Console.WriteLine($"Please provide the {dataName}");
                 input = Console.ReadLine();  
             } while (string.IsNullOrWhiteSpace(input));

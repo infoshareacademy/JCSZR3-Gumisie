@@ -7,11 +7,12 @@ namespace Grafik_Logic
     {
         public Employee(string firstName, string lastName, string phoneNumber, string emailAddress)
         {
-            var newUser = new Name {First = firstName, Last = lastName};
+            Name = new Name { Title = "Mrs", First = firstName, Last = lastName };
+            Gender = Gender.Male;
             Phone = phoneNumber;
             Email = emailAddress;
         }
-        
+
         [JsonProperty("gender")]
         public Gender Gender { get; set; }
 
