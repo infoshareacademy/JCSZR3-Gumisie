@@ -39,8 +39,7 @@ namespace Grafik_Logic
             {
                 Console.WriteLine(employee.Email);
             }
-            
-
         }
+
     }
 }

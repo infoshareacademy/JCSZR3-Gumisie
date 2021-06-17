@@ -104,9 +104,8 @@ namespace Grafik_Console
 
             if (EmployeeEmail != null)
             {
-                //var searchedEmployee = JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail));
 
-                foreach (var employee in JsonHelper.Employees.Where(x => x.Email.Contains(EmployeeEmail)))
+                foreach (var employee in JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
                 {
                     Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
 
@@ -134,7 +133,7 @@ namespace Grafik_Console
 
             if (Employeeationality != null)
             {
-                var searchedEmployeeNat = JsonHelper.Employees.Where(x => x.Email.Contains(Employeeationality));
+                var searchedEmployeeNat = JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(Employeeationality));
 
                 foreach (var employee in searchedEmployeeNat)
                 {
@@ -208,8 +207,5 @@ namespace Grafik_Console
             return input;
         }
     }
-
-
-
 
 }
