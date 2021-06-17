@@ -33,13 +33,5 @@ namespace Grafik_Logic
         }
         public static bool CheckIfUserExistsInDatabase(string email) => Employees.Any(e => e.Email == email);
 
-        public static void ListOfEmployees()
-        {
-            foreach (var employee in Employees)
-            {
-                Console.WriteLine(employee.Email);
-            }
-        }
-
     }
 }

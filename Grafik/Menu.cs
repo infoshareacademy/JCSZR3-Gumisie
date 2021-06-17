@@ -25,7 +25,7 @@ namespace Grafik_Console
             { 2, "Submit a new shift request" }, //ALL - depending on login 
             { 3, "Submit a absence request" },  //ALL - depending on login
             { 4, "Find Employee By Email" }, //Previously: "Check daily shifts" / CheckDailyShiftsSubmenu /ALL - whole team's shifts 
-            { 5, "Find Employee By Nationality" }, //PREVIOUSLY: Modify employee's shift /ModifyEmployeesShiftSubmenu /Manager's only
+            { 5, "Find Employees By Nationality" }, //PREVIOUSLY: Modify employee's shift /ModifyEmployeesShiftSubmenu /Manager's only
             { 6, "Add a new user" }, //Manager's only
         };
 
@@ -66,7 +66,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 3");
+            Console.WriteLine("Menu 2");
             Console.ReadLine();
         }
 
@@ -82,8 +82,6 @@ namespace Grafik_Console
         public SubmitNewAbsenceRequestSubmenu()
         {
             Console.WriteLine("Menu 3");
-
-            JsonHelper.ListAllUsers();
             Console.ReadLine();
         }
 
@@ -128,22 +126,19 @@ namespace Grafik_Console
         public FindEmployeeByNationalitySubmenu()
         {
             Console.WriteLine("Wyszukaj po Narodowości");
-            Console.WriteLine("Wpisz Narodowośc:");
-            string Employeeationality = (Console.ReadLine());
+            Console.WriteLine("Wpisz Narodowość:");
+            var EmployeeNationality = (Console.ReadLine());
 
-            if (Employeeationality != null)
+            if (EmployeeNationality != null)
             {
-                var searchedEmployeeNat = JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(Employeeationality));
 
-                foreach (var employee in searchedEmployeeNat)
+                foreach (var employee in JsonHelper.Employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
                 {
-                    Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+                    Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
 
                 }
                 Console.ReadLine();
             }
-
-
 
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
