@@ -23,7 +23,7 @@ namespace Grafik_Logic
             Console.WriteLine("User added successfully to the database. Press Esc to go back or any other key to add a new user.");
         }
         public static void SaveEmployeesListToJson()
-        {                                                         
+        {
             var newJson = JsonConvert.SerializeObject(_employees);
             File.WriteAllText(Path, newJson);
         }
@@ -34,6 +34,19 @@ namespace Grafik_Logic
                 Console.WriteLine($"{employee.Email} {employee.Name.First} {employee.Name.Last} {employee.Gender}");
             }
         }
-        public static bool CheckIfUserExistsInDatabase(string email)=> _employees.Any(e => e.Email == email);
+        public static bool CheckIfUserExistsInDatabase(string email) => _employees.Any(e => e.Email == email);
+
+        public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber)
+        {
+            
+            try
+            {
+                return _employees.First(e => e.Phone == phoneNumber);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
     }
 }
