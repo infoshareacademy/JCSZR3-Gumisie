@@ -66,7 +66,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Banner.DrawTopBanner(true, "Submit New Shift Request");
+            Banner.DrawTopBanner(true,"Submit New Shift Request");
             //Console.WriteLine("Menu 2");
             JsonHelper.ListAllUsers();
             Console.ReadLine();
@@ -101,7 +101,7 @@ namespace Grafik_Console
             Console.WriteLine("Wyszukaj po emailu");
             Console.WriteLine("Wpisz Email pracownika");
             string EmployeeEmail = (Console.ReadLine());
-            if (EmployeeEmail != null)
+            if (EmployeeEmail != null && !(String.IsNullOrWhiteSpace(EmployeeEmail)))
             {
                 foreach (var employee in JsonHelper._employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
                 {
@@ -124,7 +124,7 @@ namespace Grafik_Console
             Console.WriteLine("Wyszukaj po Narodowości");
             Console.WriteLine("Wpisz Narodowość:");
             var EmployeeNationality = (Console.ReadLine());
-            if (EmployeeNationality != null)
+            if (EmployeeNationality != null && !(String.IsNullOrWhiteSpace(EmployeeNationality)))
             {
                 foreach (var employee in JsonHelper._employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
                 {
@@ -185,7 +185,7 @@ namespace Grafik_Console
                     Console.WriteLine($"Provided {dataName} cannot be empty.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner(true, "Add New Employee");
+                Banner.DrawTopBanner(true,"Add New Employee");
                 Console.WriteLine($"Please provide the {dataName}");
                 input = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(input));
