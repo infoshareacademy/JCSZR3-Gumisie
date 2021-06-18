@@ -32,6 +32,5 @@ namespace Grafik_Logic
             }
         }
         public static bool CheckIfUserExistsInDatabase(string email) => Employees.Any(e => e.Email == email);
-
     }
 }

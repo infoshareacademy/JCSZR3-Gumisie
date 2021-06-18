@@ -99,19 +99,14 @@ namespace Grafik_Console
             Console.WriteLine("Wyszukaj po emailu");
             Console.WriteLine("Wpisz Email pracownika");
             string EmployeeEmail = (Console.ReadLine());
-
             if (EmployeeEmail != null)
             {
-
                 foreach (var employee in JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
                 {
                     Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
-
                 }
-
             }
             Console.ReadLine();
-
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
@@ -120,7 +115,6 @@ namespace Grafik_Console
         }
     }
 
-
     public class FindEmployeeByNationalitySubmenu : Menu
     {
         public FindEmployeeByNationalitySubmenu()
@@ -128,25 +122,20 @@ namespace Grafik_Console
             Console.WriteLine("Wyszukaj po Narodowości");
             Console.WriteLine("Wpisz Narodowość:");
             var EmployeeNationality = (Console.ReadLine());
-
             if (EmployeeNationality != null)
             {
-
                 foreach (var employee in JsonHelper.Employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
                 {
                     Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
-
                 }
                 Console.ReadLine();
             }
-
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
         {
             throw new NotImplementedException();
         }
-
     }
 
     public class AddNewUserSubmenu : Menu
@@ -202,5 +191,4 @@ namespace Grafik_Console
             return input;
         }
     }
-
 }
