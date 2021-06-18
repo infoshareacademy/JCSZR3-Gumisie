@@ -36,17 +36,6 @@ namespace Grafik_Logic
         }
         public static bool CheckIfUserExistsInDatabase(string email) => _employees.Any(e => e.Email == email);
 
-        public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber)
-        {
-            
-            try
-            {
-                return _employees.First(e => e.Phone == phoneNumber);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+        public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber) => _employees.FirstOrDefault(e => e.Phone == phoneNumber);
     }
 }
