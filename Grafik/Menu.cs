@@ -101,7 +101,7 @@ namespace Grafik_Console
             string EmployeeEmail = (Console.ReadLine());
             if (EmployeeEmail != null)
             {
-                foreach (var employee in JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
+                foreach (var employee in JsonHelper._employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
                 {
                     Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
                 }
@@ -124,7 +124,7 @@ namespace Grafik_Console
             var EmployeeNationality = (Console.ReadLine());
             if (EmployeeNationality != null)
             {
-                foreach (var employee in JsonHelper.Employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
+                foreach (var employee in JsonHelper._employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
                 {
                     Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
                 }
@@ -144,11 +144,10 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner(true);
                 var newUser = GetPersonalDataToCreateNewEmployee();
                 if (newUser != null)
                 {
-                    JsonHelper.SaveEmployeeToJson(newUser);
+                    JsonHelper.AddNewEmployeeToEmployeesList(newUser);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
@@ -184,7 +183,7 @@ namespace Grafik_Console
                     Console.WriteLine($"Provided {dataName} cannot be empty.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner(true);
+                Banner.DrawTopBanner(true, "Add New Employee");
                 Console.WriteLine($"Please provide the {dataName}");
                 input = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(input));

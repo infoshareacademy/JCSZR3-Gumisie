@@ -8,29 +8,32 @@ namespace Grafik_Logic
 {
     public static class JsonHelper
     {
-        public static List<Employee> Employees;
+        public static List<Employee> _employees;
         private const string Path = @"JSON Files\Employees.json";
 
         public static void LoadEmployeesJson()
         {
             var json = File.ReadAllText(Path);
-            Employees = JsonConvert.DeserializeObject<List<Employee>>(json);
+            _employees = JsonConvert.DeserializeObject<List<Employee>>(json);
         }
 
-        public static void SaveEmployeeToJson(Employee employee)
+        public static void AddNewEmployeeToEmployeesList(Employee employee)
         {
-            Employees.Add(employee);
-            var newJson = JsonConvert.SerializeObject(Employees);
+            _employees.Add(employee);
+            Console.WriteLine("User added successfully to the database. Press Esc to go back or any other key to add a new user.");
+        }
+        public static void SaveEmployeesListToJson()
+        {                                                         
+            var newJson = JsonConvert.SerializeObject(_employees);
             File.WriteAllText(Path, newJson);
-            Console.WriteLine("User added successfully to the database.");
         }
         public static void ListAllUsers()
         {
-            foreach (var employee in Employees)
+            foreach (var employee in _employees)
             {
-                Console.WriteLine(employee.Email);
+                Console.WriteLine($"{employee.Email} {employee.Name.First} {employee.Name.Last} {employee.Gender}");
             }
         }
-        public static bool CheckIfUserExistsInDatabase(string email) => Employees.Any(e => e.Email == email);
+        public static bool CheckIfUserExistsInDatabase(string email)=> _employees.Any(e => e.Email == email);
     }
 }
