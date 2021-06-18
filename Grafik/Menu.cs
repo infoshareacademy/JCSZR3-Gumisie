@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Grafik_Logic;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner(true);
+                Banner.DrawTopBanner(true,"Check Shifts");
                 Console.WriteLine("Please provide a date");
                 var dateChoice = Console.ReadLine();
                 var output = ShiftChecker.CheckShift(dateChoice);
@@ -83,6 +83,7 @@ namespace Grafik_Console
     {
         public SubmitNewAbsenceRequestSubmenu()
         {
+            Banner.DrawTopBanner(true,"Submit New Absence Request");
             Console.WriteLine("Menu 3");
             Console.ReadLine();
         }
