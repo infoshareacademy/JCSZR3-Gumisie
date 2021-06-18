@@ -66,7 +66,9 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Console.WriteLine("Menu 2");
+            Banner.DrawTopBanner(true, "Submit New Shift Request");
+            //Console.WriteLine("Menu 2");
+            JsonHelper.ListAllUsers();
             Console.ReadLine();
         }
 

@@ -34,6 +34,6 @@ namespace Grafik_Logic
                 Console.WriteLine($"{employee.Email} {employee.Name.First} {employee.Name.Last} {employee.Gender}");
             }
         }
-        public static bool CheckIfUserExistsInDatabase(string email) => _employees.Any(e => e.Email == email);
+        public static bool CheckIfUserExistsInDatabase(string email)=> _employees.Any(e => e.Email == email);
     }
 }
