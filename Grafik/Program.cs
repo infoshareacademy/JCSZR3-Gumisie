@@ -34,7 +34,7 @@ namespace Grafik_Console
                 do
                 {
                     i++;
-                    Banner.DrawTopBanner(true, "Main Menu");
+                    Banner.DrawTopBanner(true,"Main Menu");
                     Menu.ListMenu(mainMenu.MenuOptions);
                     if (i > 1)
                     {
