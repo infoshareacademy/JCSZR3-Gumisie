@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Channels;
 using Grafik_Logic;
 using System.Linq;
 
@@ -47,7 +48,7 @@ namespace Grafik_Console
         {
             do
             {
-                Banner.DrawTopBanner(true,"Check Shifts");
+                Banner.DrawTopBanner(true, "Check Shifts");
                 Console.WriteLine("Please provide a date");
                 var dateChoice = Console.ReadLine();
                 var output = ShiftChecker.CheckShift(dateChoice);
@@ -66,7 +67,7 @@ namespace Grafik_Console
     {
         public SubmitNewShiftRequestSubmenu()
         {
-            Banner.DrawTopBanner(true,"Submit New Shift Request");
+            Banner.DrawTopBanner(true, "Submit New Shift Request");
             //Console.WriteLine("Menu 2");
             JsonHelper.ListAllUsers();
             Console.ReadLine();
@@ -83,9 +84,26 @@ namespace Grafik_Console
     {
         public SubmitNewAbsenceRequestSubmenu()
         {
-            Banner.DrawTopBanner(true,"Submit New Absence Request");
-            Console.WriteLine("Menu 3");
-            Console.ReadLine();
+            do
+            {
+                Banner.DrawTopBanner(true, "Submit New Absence Request");
+                //Console.WriteLine("Menu 3");
+                Console.WriteLine("Phone number:");
+                var employeePhoneNumber = Console.ReadLine();
+                var foundEmployee = JsonHelper.SearchForEmployeeByPhoneNumber(employeePhoneNumber);
+                if (foundEmployee != null)
+                {
+                    Console.WriteLine($"First name: {foundEmployee.Name.First}");
+                    Console.WriteLine($"Last name: {foundEmployee.Name.Last}");
+                    Console.WriteLine($"Phone: {foundEmployee.Phone}");
+                    Console.WriteLine("Press Escape to go back or any other key to find another employee.");
+                }
+                else
+                {
+                    Console.WriteLine("There is no employee with the provided phone number. Press Escape to go back or any other key to retry.");
+                }
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+
         }
 
         public override Dictionary<int, string> MenuOptions { get; } = new();
@@ -99,8 +117,8 @@ namespace Grafik_Console
     {
         public FindEmployeeByEmailSubmenu()
         {
-            Console.WriteLine("Wyszukaj po emailu");
-            Console.WriteLine("Wpisz Email pracownika");
+            Console.WriteLine("Search by Email");
+            Console.WriteLine("Enter email address:");
             string EmployeeEmail = (Console.ReadLine());
             if (EmployeeEmail != null && !(String.IsNullOrWhiteSpace(EmployeeEmail)))
             {
@@ -122,8 +140,8 @@ namespace Grafik_Console
     {
         public FindEmployeeByNationalitySubmenu()
         {
-            Console.WriteLine("Wyszukaj po Narodowości");
-            Console.WriteLine("Wpisz Narodowość:");
+            Console.WriteLine("Search by Nationality");
+            Console.WriteLine("Enter Nationality:");
             var EmployeeNationality = (Console.ReadLine());
             if (EmployeeNationality != null && !(String.IsNullOrWhiteSpace(EmployeeNationality)))
             {
@@ -186,7 +204,7 @@ namespace Grafik_Console
                     Console.WriteLine($"Provided {dataName} cannot be empty.");
                     Console.ReadKey();
                 }
-                Banner.DrawTopBanner(true,"Add New Employee");
+                Banner.DrawTopBanner(true, "Add New Employee");
                 Console.WriteLine($"Please provide the {dataName}");
                 input = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(input));
