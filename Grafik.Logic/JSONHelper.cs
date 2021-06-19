@@ -10,6 +10,8 @@ namespace Grafik_Logic
     {
         private static List<Employee> _employees;
         private const string Path = @"JSON Files\Employees.json";
+        private static List<Timesheet> _timesheets;
+        private const string Path2 = @"JSON Files\Timesheet.json";
 
         public static void LoadEmployeesJson()
         {
@@ -37,5 +39,18 @@ namespace Grafik_Logic
         public static bool CheckIfUserExistsInDatabase(string email) => _employees.Any(e => e.Email == email);
 
         public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber) => _employees.FirstOrDefault(e => e.Phone == phoneNumber);
+
+        public static void LoadTimesheetsJson()
+        {
+            var json = File.ReadAllText(Path2);
+            _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json);
+        }
+        public static void WriteSheets()
+        {
+            foreach (var timesheet in _timesheets)
+            {
+                Console.WriteLine(timesheet.Timesheetdate);
+            }
+        }
     }
 }

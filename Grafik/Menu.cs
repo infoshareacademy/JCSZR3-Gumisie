@@ -133,6 +133,7 @@ namespace Grafik_Console
         {
             Banner.DrawTopBanner(true, "Modify Employees Shift");
             Console.WriteLine("Menu 5");
+            JsonHelper.WriteSheets();
             Console.ReadLine();
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
