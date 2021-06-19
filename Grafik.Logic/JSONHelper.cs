@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace Grafik_Logic
 {
     public static class JsonHelper
     {
-        private static List<Employee> _employees;
+        public static List<Employee> _employees;
         private const string Path = @"JSON Files\Employees.json";
 
         public static void LoadEmployeesJson()
