@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Grafik_Logic
 {
@@ -43,7 +44,11 @@ namespace Grafik_Logic
         public static void LoadTimesheetsJson()
         {
             var json = File.ReadAllText(Path2);
-            _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json);
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json,settings);
         }
         public static void WriteSheets()
         {
