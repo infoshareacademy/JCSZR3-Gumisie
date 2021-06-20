@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Grafik_Console
 {
-    public class Login
+    public static class Login
     {
-        private static string userMail;
-        private static string userPassword;
+        private static string _userMail;
+        private static string _userPassword;
         public static void AskForCredentials()
         {
+            _userMail = "";
+            _userPassword = "";
             Console.WriteLine("Please provide your email:");
-            userMail = Console.ReadLine();
-            Console.WriteLine("Please provide you password:");
-            userPassword = Console.ReadLine();
+            _userMail = Console.ReadLine();
+            Console.WriteLine("Please provide your password:");
+            _userPassword = Console.ReadLine();
         }
-        public static bool CheckCredentials() => userMail == "123" && userPassword == "admin";
+        public static bool CheckCredentials() => _userMail == "123" && _userPassword == "admin";
     }
 }
