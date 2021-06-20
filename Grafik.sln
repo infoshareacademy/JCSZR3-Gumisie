@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grafik_Console", "Grafik\Grafik_Console.csproj", "{F7801492-7534-4038-990D-051D994E8D9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafik_Logic", "Grafik.Logic\Grafik_Logic.csproj", "{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grafik_Logic", "Grafik.Logic\Grafik_Logic.csproj", "{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafik_Web", "Grafik_Web\Grafik_Web.csproj", "{C48412BE-223F-419A-83B1-6A125A7DCFA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48412BE-223F-419A-83B1-6A125A7DCFA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48412BE-223F-419A-83B1-6A125A7DCFA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48412BE-223F-419A-83B1-6A125A7DCFA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48412BE-223F-419A-83B1-6A125A7DCFA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

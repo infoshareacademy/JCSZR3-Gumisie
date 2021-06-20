@@ -12,12 +12,6 @@
     <None Update="JSON Files\Employees.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="JSON Files\EmployeesDummyData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="JSON Files\More.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="JSON Files\Timesheet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
