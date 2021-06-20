@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Channels;
 using Grafik_Logic;
 
 namespace Grafik_Console
@@ -133,7 +132,7 @@ namespace Grafik_Console
         {
             Banner.DrawTopBanner(true, "Modify Employees Shift");
             Console.WriteLine("Menu 5");
-            JsonHelper.WriteSheets();
+            JsonHelper.GetDailyShifts();
             Console.ReadLine();
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();

@@ -50,11 +50,18 @@ namespace Grafik_Logic
             };
             _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json,settings);
         }
-        public static void WriteSheets()
+        public static void GetDailyShifts()
         {
-            foreach (var timesheet in _timesheets)
+            var timesheetDay = new DateTime(2021, 6, 18);
+            var timesheetForChosenDay =  _timesheets.FindAll(s => s.Timesheetdate.Equals(timesheetDay))[0];
+
+            foreach (var shift in timesheetForChosenDay.Shifts)
             {
-                Console.WriteLine(timesheet.Timesheetdate);
+                var employeeName = _employees.Find(e => e.Email == shift.Employeemail);
+                if (employeeName != null)
+                {
+                    Console.WriteLine($"Employee:{employeeName.Name.First} {employeeName.Name.Last} Start time: {shift.Starttime:HH:mm:ss} Finish time:{shift.Finishtime:HH:mm:ss}");  
+                }
             }
         }
     }
