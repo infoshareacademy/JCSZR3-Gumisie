@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Grafik_Logic;
+using System.Linq;
 
 namespace Grafik_Console
 {
@@ -23,8 +24,8 @@ namespace Grafik_Console
             { 1, "Check shifts" },   //ALL - depending on login 
             { 2, "Submit a new shift request" }, //ALL - depending on login 
             { 3, "Submit a absence request" },  //ALL - depending on login
-            { 4, "Check daily shifts" }, //ALL - whole team's shifts
-            { 5, "Modify employee's shift" }, //Manager's only
+            { 4, "Find Employee By Email" }, //Previously: "Check daily shifts" / CheckDailyShiftsSubmenu /ALL - whole team's shifts 
+            { 5, "Find Employees By Nationality" }, //PREVIOUSLY: Modify employee's shift /ModifyEmployeesShiftSubmenu /Manager's only
             { 6, "Add a new user" }, //Manager's only
         };
 
@@ -34,8 +35,8 @@ namespace Grafik_Console
                 1 => new CheckShiftsSubmenu(),
                 2 => new SubmitNewShiftRequestSubmenu(),
                 3 => new SubmitNewAbsenceRequestSubmenu(),
-                4 => new CheckDailyShiftsSubmenu(),
-                5 => new ModifyEmployeesShiftSubmenu(),
+                4 => new FindEmployeeByEmailSubmenu(),
+                5 => new FindEmployeeByNationalitySubmenu(),
                 6 => new AddNewUserSubmenu(),
                 _ => null
             };
@@ -111,12 +112,20 @@ namespace Grafik_Console
         }
     }
 
-    public class CheckDailyShiftsSubmenu : Menu
+    public class FindEmployeeByEmailSubmenu : Menu
     {
-        public CheckDailyShiftsSubmenu()
+        public FindEmployeeByEmailSubmenu()
         {
-            Banner.DrawTopBanner(true, "Check Daily Shifts");
-            Console.WriteLine("Menu 4");
+            Console.WriteLine("Search by Email");
+            Console.WriteLine("Enter email address:");
+            string EmployeeEmail = (Console.ReadLine());
+            if (EmployeeEmail != null && !(String.IsNullOrWhiteSpace(EmployeeEmail)))
+            {
+                foreach (var employee in JsonHelper._employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
+                {
+                    Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+                }
+            }
             Console.ReadLine();
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
@@ -126,14 +135,21 @@ namespace Grafik_Console
         }
     }
 
-    public class ModifyEmployeesShiftSubmenu : Menu
+    public class FindEmployeeByNationalitySubmenu : Menu
     {
-        public ModifyEmployeesShiftSubmenu()
+        public FindEmployeeByNationalitySubmenu()
         {
-            Banner.DrawTopBanner(true, "Modify Employees Shift");
-            Console.WriteLine("Menu 5");
-            JsonHelper.GetDailyShifts();
-            Console.ReadLine();
+            Console.WriteLine("Search by Nationality");
+            Console.WriteLine("Enter Nationality:");
+            var EmployeeNationality = (Console.ReadLine());
+            if (EmployeeNationality != null && !(String.IsNullOrWhiteSpace(EmployeeNationality)))
+            {
+                foreach (var employee in JsonHelper._employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
+                {
+                    Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+                }
+                Console.ReadLine();
+            }
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
