@@ -10,6 +10,7 @@ namespace Grafik_Console
         {
             //application start point - loading employees list from JSON
             JsonHelper.LoadEmployeesJson();
+            JsonHelper.LoadTimesheetsJson();
 
             var i = 0;
             do
