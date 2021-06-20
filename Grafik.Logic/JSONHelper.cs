@@ -9,7 +9,7 @@ namespace Grafik_Logic
 {
     public static class JsonHelper
     {
-        public static List<Employee> _employees;
+        public static List<Employee> Employees;
         private const string Path = @"JSON Files\Employees.json";
         private static List<Timesheet> _timesheets;
         private const string Path2 = @"JSON Files\Timesheet.json";
@@ -17,29 +17,44 @@ namespace Grafik_Logic
         public static void LoadEmployeesJson()
         {
             var json = File.ReadAllText(Path);
-            _employees = JsonConvert.DeserializeObject<List<Employee>>(json);
+            Employees = JsonConvert.DeserializeObject<List<Employee>>(json);
         }
 
         public static void AddNewEmployeeToEmployeesList(Employee employee)
         {
-            _employees.Add(employee);
+            Employees.Add(employee);
             Console.WriteLine("User added successfully to the database. Press Esc to go back or any other key to add a new user.");
         }
         public static void SaveEmployeesListToJson()
         {
-            var newJson = JsonConvert.SerializeObject(_employees);
+            var newJson = JsonConvert.SerializeObject(Employees);
             File.WriteAllText(Path, newJson);
         }
         public static void ListAllUsers()
         {
-            foreach (var employee in _employees)
+            foreach (var employee in Employees)
             {
                 Console.WriteLine($"{employee.Email} {employee.Name.First} {employee.Name.Last} {employee.Gender}");
             }
         }
-        public static bool CheckIfUserExistsInDatabase(string email) => _employees.Any(e => e.Email == email);
-
-        public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber) => _employees.FirstOrDefault(e => e.Phone == phoneNumber);
+        public static bool CheckIfUserExistsInDatabase(string email) => Employees.Any(e => e.Email == email);
+        public static Employee SearchForEmployeeByPhoneNumber(string phoneNumber) => Employees.FirstOrDefault(e => e.Phone == phoneNumber);
+        public static void SearchForEmployeeByEmail(string email)
+        {
+            foreach (var employee in JsonHelper.Employees.Where(x => x.Email != null && x.Email.Contains(email)))
+            {
+                Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+            }
+        }
+        public static void SearchForEmployeeByNationality(string nationality)
+        {
+            if (string.IsNullOrWhiteSpace(nationality)) return;
+            foreach (var employee in JsonHelper.Employees.Where(x => x.Nat != null && x.Nat.Equals(nationality))) 
+            {
+                Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
+            }
+            Console.ReadLine();
+        }
 
         public static void LoadTimesheetsJson()
         {
@@ -48,19 +63,33 @@ namespace Grafik_Logic
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
-            _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json,settings);
+            _timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json, settings);
         }
+        //public static string ValidateEmployeesData(string dataName)
+        //{
+        //    string input;
+        //    var i = 0;
+        //    do
+        //    {
+        //        i++;
+        //        if (i > 1)
+        //        {
+        //        }
+        //        input = Console.ReadLine();
+        //    } while (string.IsNullOrWhiteSpace(input));
+        //    return input;
+        //}
         public static void GetDailyShifts()
         {
             var timesheetDay = new DateTime(2021, 6, 18);
-            var timesheetForChosenDay =  _timesheets.FindAll(s => s.Timesheetdate.Equals(timesheetDay))[0];
+            var timesheetForChosenDay = _timesheets.FindAll(s => s.Timesheetdate.Equals(timesheetDay))[0];
 
             foreach (var shift in timesheetForChosenDay.Shifts)
             {
-                var employeeName = _employees.Find(e => e.Email == shift.Employeemail);
+                var employeeName = Employees.Find(e => e.Email == shift.Employeemail);
                 if (employeeName != null)
                 {
-                    Console.WriteLine($"Employee:{employeeName.Name.First} {employeeName.Name.Last} Start time: {shift.Starttime:HH:mm:ss} Finish time:{shift.Finishtime:HH:mm:ss}");  
+                    Console.WriteLine($"Employee:{employeeName.Name.First} {employeeName.Name.Last} Start time: {shift.Starttime:HH:mm:ss} Finish time:{shift.Finishtime:HH:mm:ss}");
                 }
             }
         }

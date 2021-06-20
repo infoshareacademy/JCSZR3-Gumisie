@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Grafik_Logic
 {
-    public class Shift
+    internal class TimesheetHelper
     {
-        public string Employeemail { get; set; }
-        public DateTime Starttime { get; set; }
-        public DateTime Finishtime { get; set; }
-    }
+        //private DateTime _getCurrentDateTime = DateTime.Now;
+        //private int DayWorkingHours { get; set; } // property to store amount hours Employee working in day
 
-    public class Timesheet
-    {
-        public DateTime Timesheetdate { get; set; }
-        public List<Shift> Shifts { get; set; }
+        // possible methods
+        //public void GetDate()
+        //{
+        //    var dateTime = DateTime.Now;
+        //}
+        //public int GetDayOfTheWeek(DateTime date)
+        //{
+        //    return default;
+        //}
+        ////public int CalculateHoursForShift(int start, int end) => DayWorkingHours = end - start;
+        //public List<Timesheet> AllRecords()
+        //{
+        //    return default;
+        //}
     }
 }

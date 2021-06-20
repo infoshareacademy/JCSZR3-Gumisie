@@ -118,13 +118,10 @@ namespace Grafik_Console
         {
             Console.WriteLine("Search by Email");
             Console.WriteLine("Enter email address:");
-            string EmployeeEmail = (Console.ReadLine());
-            if (EmployeeEmail != null && !(String.IsNullOrWhiteSpace(EmployeeEmail)))
+            string employeeEmail = (Console.ReadLine());
+            if (employeeEmail != null && !(string.IsNullOrWhiteSpace(employeeEmail)))
             {
-                foreach (var employee in JsonHelper._employees.Where(x => x.Email != null && x.Email.Contains(EmployeeEmail)))
-                {
-                    Console.WriteLine($"{employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
-                }
+                JsonHelper.SearchForEmployeeByEmail(employeeEmail);
             }
             Console.ReadLine();
         }
@@ -141,15 +138,8 @@ namespace Grafik_Console
         {
             Console.WriteLine("Search by Nationality");
             Console.WriteLine("Enter Nationality:");
-            var EmployeeNationality = (Console.ReadLine());
-            if (EmployeeNationality != null && !(String.IsNullOrWhiteSpace(EmployeeNationality)))
-            {
-                foreach (var employee in JsonHelper._employees.Where(x => x.Nat != null && x.Nat.Equals(EmployeeNationality))) 
-                {
-                    Console.WriteLine($" {employee.Email} {employee.Phone} {employee.Gender} {employee.Nat}");
-                }
-                Console.ReadLine();
-            }
+            var employeeNationality = (Console.ReadLine());
+            JsonHelper.SearchForEmployeeByNationality(employeeNationality);
         }
         public override Dictionary<int, string> MenuOptions { get; } = new();
         public override Menu CheckMenuChoice(int userChoice)
@@ -191,23 +181,6 @@ namespace Grafik_Console
             var phone = ValidateEmployeesData("phone number");
             return new Employee(firstName, lastName, phone, email);
         }
-        private static string ValidateEmployeesData(string dataName)
-        {
-            string input;
-            var i = 0;
-            do
-            {
-                i++;
-                if (i > 1)
-                {
-                    Console.WriteLine($"Provided {dataName} cannot be empty.");
-                    Console.ReadKey();
-                }
-                Banner.DrawTopBanner(true, "Add New Employee");
-                Console.WriteLine($"Please provide the {dataName}");
-                input = Console.ReadLine();
-            } while (string.IsNullOrWhiteSpace(input));
-            return input;
-        }
+        
     }
 }
