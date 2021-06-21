@@ -86,10 +86,10 @@ namespace Grafik_Logic
 
             foreach (var shift in timesheetForChosenDay.Shifts)
             {
-                var employeeName = Employees.Find(e => e.Email == shift.Employeemail);
+                var employeeName = Employees.Find(e => e.Email == shift.EmployeeEmail);
                 if (employeeName != null)
                 {
-                    Console.WriteLine($"Employee:{employeeName.Name.First} {employeeName.Name.Last} Start time: {shift.Starttime:HH:mm:ss} Finish time:{shift.Finishtime:HH:mm:ss}");
+                    Console.WriteLine($"Employee:{employeeName.Name.First} {employeeName.Name.Last} Start time: {shift.StartTime:HH:mm:ss} Finish time:{shift.FinishTime:HH:mm:ss}");
                 }
             }
         }
