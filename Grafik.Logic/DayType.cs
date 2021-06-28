@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Grafik_Logic
 {
-    public class DayType
+    public static class DayType
     {
-        public string Working = "Work";
-        public string SickLeave = "Sick Leave";
-        public string Holiday = "Holiday";
+        public readonly static string Work = "Work";
+        public readonly static string SickLeave = "Sick Leave";
+        public readonly static string Holiday = "Holiday";
+        public readonly static string OnDemand = "On demand";
+        public readonly static string SpecialLeave = "Special Leave";
     }
 }
