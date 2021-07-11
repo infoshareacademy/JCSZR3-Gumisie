@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Grafik_Web.Models.AbsenceRequests>
+@{
+    ViewData["Title"] = "Submit New Absence Request";
+}
+
+<div class="text-center row">
+    <h1>Submit new absence request</h1>
+</div>
+
+<div class="row">
+    <div class="col bg-secondary text-white rounded">
+        <div class="form-container">
+            <form>
+                <div class="row form-group text-center">
+                    <div class="col-6 d-inline-block text-center">
+                        <label for="absenceStartDate">Absence Start Date</label>
+                        <input type="date" id="absenceStartDate">
+                    </div>
+                    <div class="col-6 d-inline-block text-center">
+                        <label for="absenceEndDate">Absence End Date</label>
+                        <input type="date" id="absenceEndDate">
+                    </div>
+                </div>
+                <div class="row form-group text-center justify-content-center">
+                    <label for="absenceType">Absence Type</label>
+                    <select class="custom-select col-11" id="absenceType">
+                        <option selected>Choose...</option>
+                        <option value="1">Annual leave</option>
+                        <option value="2">Special Leave</option>
+                        <option value="3">On Demand</option>
+                    </select>
+                </div>
+                <div class="row form-group text-center justify-content-center">
+                    <label for="absenceComment">Comment</label>
+                    <input type="text" class="form-control col-11" placeholder="Comments..." id="absenceComment" aria-label="Comments" />
+                </div>
+                <div class="row form-group text-center justify-content-center">
+                    <div class="col">
+                        <button type="reset" class="btn btn-warning">Clear Form</button>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col bg-light d-flex flex-column justify-content-around">
+        <div class="holidaysBalanceContainer">
+            <div>
+                <p>Holidays balance</p>
+            </div>
+            <div class="progress align-middle text-center" style="height: 25px">
+                <div class="progress-bar-striped bg-success" role="progressbar" style="width: 70%">
+                    18
+                </div>
+                <div class=" row progress-bar-striped bg-danger" role="progressbar" style="width: 30%">
+                    8
+                </div>
+            </div>
+        </div>
+        <div class="specialLeaveBalanceContainer">
+            <div>
+                <p>Special leave balance</p>
+            </div>
+            <div class="progress" style="height: 25px">
+                <div class="progress-bar-striped bg-success" role="progressbar" style="width: 50%">
+                    1
+                </div>
+                <div class=" row progress-bar-striped bg-danger" role="progressbar" style="width: 50%">
+                    1
+                </div>
+            </div>
+        </div>
+        <div class="onDemandeBalanceContainer">
+            <div>
+                <p>On demand balance</p>
+            </div>
+            <div class="progress" style="height: 25px">
+                <div class="progress-bar-striped bg-success" role="progressbar" style="width: 25%">
+                    1
+                </div>
+                <div class=" row progress-bar-striped bg-danger" role="progressbar" style="width: 75%">
+                    3
+                </div>
+            </div>
+        </div>
+        @*        <div class="progress flex-wrap">
+            <div class="row">
+            <p>Available days</p>
+            </div>
+            <div class="row progress-bar-striped bg-success" role="progressbar" style="width: 50%"></div>
+            <div class="row">
+            <p>Days taken</p>
+            </div>
+            <div class=" row progress-bar-striped bg-danger" role="progressbar" style="width: 50%"></div>
+            </div>*@
+        @*            <div class="progress">
+            <div class="progress-bar-striped bg-success" role="progressbar" style="width: 80%">
+            Free Space
+            </div>
+            <div class="progress-bar-striped bg-danger" role="progressbar" style="width: 20%">
+            Danger
+            </div>
+            </div>
+            <div class="progress">
+            <div class="progress-bar-striped bg-success" role="progressbar" style="width: 40%">
+            Free Space
+            </div>
+            <div class="progress-bar-striped bg-danger" role="progressbar" style="width: 60%">
+            Danger
+            </div>
+            </div>*@
+
+    </div>
+</div>
