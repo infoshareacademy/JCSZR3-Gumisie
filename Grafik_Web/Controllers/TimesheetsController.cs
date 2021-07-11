@@ -5,11 +5,11 @@ using System.Diagnostics;
 
 namespace Grafik_Web.Controllers
 {
-    public class HomeController : Controller
+    public class TimesheetsController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<TimesheetsController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public TimesheetsController(ILogger<TimesheetsController> logger)
         {
             _logger = logger;
         }
@@ -20,10 +20,6 @@ namespace Grafik_Web.Controllers
         }
 
         public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult SubmitNewAbsenceRequest()
         {
             return View();
         }
