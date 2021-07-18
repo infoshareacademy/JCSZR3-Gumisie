@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Grafik_Web.Models.AbsenceRequests>
+﻿@model Grafik_Web.Models.AbsenceRequest
 @{
     ViewData["Title"] = "Submit New Absence Request";
 }
@@ -10,19 +10,22 @@
 <div class="row">
     <div class="col bg-secondary text-white rounded">
         <div class="form-container">
-            <form>
+            @using (Html.BeginForm("SubmitNewAbsenceRequest", "AbsenceRequest", FormMethod.Post))
+            {
                 <div class="row form-group text-center">
                     <div class="col-6 d-inline-block text-center">
-                        <label for="absenceStartDate">Absence Start Date</label>
-                        <input type="date" id="absenceStartDate">
-                    </div>
+                        <label>Absence type</label>
+                        @Html.TextBoxFor(m => m.RequestType, new {@class = "klasa"})
+                        @Html.ValidationMessageFor(m => m.RequestType)
+@*                        <input type="date" id="absenceStartDate">
+*@                    </div>
                     <div class="col-6 d-inline-block text-center">
                         <label for="absenceEndDate">Absence End Date</label>
                         <input type="date" id="absenceEndDate">
                     </div>
                 </div>
                 <div class="row form-group text-center justify-content-center">
-                    <label for="absenceType">Absence Type</label>
+                    <label for="absenceType">Absence Type</label> 
                     <select class="custom-select col-11" id="absenceType">
                         <option selected>Choose...</option>
                         <option value="1">Annual leave</option>
@@ -42,7 +45,7 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
     <div class="col bg-light d-flex flex-column justify-content-around">

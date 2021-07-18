@@ -7,10 +7,6 @@ using Grafik_Logic;
 
 namespace Grafik_Web.Models
 {
-    public class AbsenceRequests
-    {
-        public List<AbsenceRequest> AbsenceRequestsList;
-    }
 
     public class AbsenceRequest
     {
@@ -26,7 +22,7 @@ namespace Grafik_Web.Models
         public DateTime AbsenceEndDate { get; set; }
         [Required]
         public string CurrentStatus { get; set; }
-        [Required]
+
         public string RequestType { get; set; }
     }
 }
