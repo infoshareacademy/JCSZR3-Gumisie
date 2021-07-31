@@ -6,8 +6,8 @@ var month = "Jul";
 var year;
 $(document).ready(function () {
     var dt = new Date();
-    $('#todayIs tr').eq(dt.getUTCDate() - 1).css("background-image", "linear-gradient(to right top, #ffffff, #deddeb, #bcbbd8, #989cc5, #727eb3, #5c79b1, #3f75af, #0071ab, #0082b1, #0092b1, #00a0ad, #21aea5)");
-    $('#todayIs tr').eq(dt.getUTCDate() - 1).css("color", "white");
+    $('#todayIs tr').eq(dt.getDate() - 1).css("background-image", "linear-gradient(to right top, #ffffff, #deddeb, #bcbbd8, #989cc5, #727eb3, #5c79b1, #3f75af, #0071ab, #0082b1, #0092b1, #00a0ad, #21aea5)");
+    $('#todayIs tr').eq(dt.getDate() - 1).css("color", "white");
 
     var month = document.getElementById("hidMonth").value;
     var year = document.getElementById("hidYear").value;
