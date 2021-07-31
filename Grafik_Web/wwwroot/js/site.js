@@ -72,16 +72,14 @@ function SetTime() {
 
     for (var d = valueFDstart; d <= valueLDstop; d.setDate(d.getDate() + 1)) {
         var j = d.getDate();
-        var timeStart = $("#timeStart_" + j).val();
-        document.getElementById("timeStart_" + j).value = valueFTstart;
-        document.getElementById("timeFinish_" + j).value = valueLTstop;
-        if (valueFTstart > timeStart) {
+        if (!valueFTstart && !valueLTstop) deleteTimeInRow(j);
+        if (valueFTstart && valueLTstop)
+        {
+            document.getElementById("timeStart_" + j).value = valueFTstart;
+            document.getElementById("timeFinish_" + j).value = valueLTstop;
             calculateTime(j);
         }
-        if (valueFTstart < timeStart) {
-            deleteTimeInRow(j);
-        }
-        document.getElementById("shiftDetails_" + j).value = valueShiftDetails;
+            document.getElementById("shiftDetails_" + j).value = valueShiftDetails;
         isApply = false;
         document.querySelector('#remove_btn').classList.replace('btn-primary', 'btn-secondary');
         document.getElementById("newTimes").checked = false;
@@ -109,10 +107,8 @@ function deleteTimeInRow(i) {
 }
 
 function deleterow(i) {
-    if ($("#timeStart_" + i).val() || $("#timeFinish_" + i).val() || $("#shiftDetails_" + i).val()) {
-        deleteTimeInRow(i);
-        document.getElementById("shiftDetails_" + i).value = null;
-    }
+    deleteTimeInRow(i);
+    document.getElementById("shiftDetails_" + i).value = null;
 }
 
 $("#remove_btn").click(function () {
