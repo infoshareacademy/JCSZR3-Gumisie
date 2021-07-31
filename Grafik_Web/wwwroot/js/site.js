@@ -109,8 +109,10 @@ function deleteTimeInRow(i) {
 }
 
 function deleterow(i) {
-    deleteTimeInRow(i);
-    document.getElementById("shiftDetails_" + i).value = null;
+    if ($("#timeStart_" + i).val() || $("#timeFinish_" + i).val() || $("#shiftDetails_" + i).val()) {
+        deleteTimeInRow(i);
+        document.getElementById("shiftDetails_" + i).value = null;
+    }
 }
 
 $("#remove_btn").click(function () {
