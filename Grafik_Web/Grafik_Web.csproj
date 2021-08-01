@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Grafik.Logic\Grafik_Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>

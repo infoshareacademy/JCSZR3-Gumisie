@@ -25,7 +25,6 @@ $(document).ready(function () {
             document.getElementById("hidYear").value = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
         }
     });
-
     document.getElementById("hidTest").value = month;
 })
 

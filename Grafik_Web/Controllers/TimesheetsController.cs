@@ -16,7 +16,10 @@ namespace Grafik_Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            TimeSheetViewModel timesheets = new TimeSheetViewModel();
+            timesheets.Employees = Grafik_Logic.JsonHelper.LoadEmployeesJson<Grafik_Logic.Employee>();
+
+            return View(timesheets);
         }
 
         public IActionResult Privacy()

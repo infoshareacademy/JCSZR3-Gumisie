@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Grafik_Logic;
 
 namespace Grafik_Web.Models
 {
     public class TimeSheetViewModel
     {
-        public List<Grafik_Logic.Timesheet> Timesheets;
-        public Grafik_Logic.Timesheet Timesheet;
+        public List<Timesheet> Timesheets;
+        public Timesheet Timesheet;
 
-        public List<Grafik_Logic.Employee> Employees;
-        public Grafik_Logic.Employee Employee;
+        public List<Employee> Employees;
+        public Employee Employee;
     }
 }
