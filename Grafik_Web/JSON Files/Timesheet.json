@@ -1,0 +1,54 @@
+[
+  {
+    "timesheetdate": "2021-06-18T00:00:00.0000",
+    "shifts": [
+      {
+        "EmployeeEmail": "bonnie.craig@example.com",
+        "StartTime": "2021-06-18T08:00:00.0000",
+        "FinishTime": "2021-06-18T16:00:00.0000",
+        "DayOfTheWeek": "Friday",
+        "WorkingDateType":  "Work"
+      },
+      {
+        "EmployeeEmail": "lucille.mitchelle@example.com",
+        "StartTime": "2021-06-18T10:00:00.0000",
+        "FinishTime": "2021-06-18T18:00:00.0000",
+        "DayOfTheWeek": "Friday",
+        "WorkingDateType": "Work"
+      },
+      {
+        "EmployeeEmail": "jt@mail.com",
+        "StartTime": "2021-06-18T11:30:00.0000",
+        "FinishTime": "2021-06-18T19:30:00.0000",
+        "DayOfTheWeek": "Friday",
+        "WorkingDateType": "Work"
+      }
+    ]
+  },
+  {
+    "timesheetdate": "2021-06-19T00:00:00.0000",
+    "shifts": [
+      {
+        "EmployeeEmail": "bonnie.craig@example.com",
+        "StartTime": "2021-06-18T08:00:00.0000",
+        "FinishTime": "2021-06-18T16:00:00.0000",
+        "DayOfTheWeek": "Saturday",
+        "WorkingDateType": "Work"
+      },
+      {
+        "EmployeeEmail": "lucille.mitchelle@example.com",
+        "StartTime": "2021-06-18T10:00:00.0000",
+        "FinishTime": "2021-06-18T18:00:00.0000",
+        "DayOfTheWeek": "Saturday",
+        "WorkingDateType": "Work"
+      },
+      {
+        "EmployeeEmail": "jt@mail.com",
+        "StartTime": "2021-06-18T11:30:00.0000",
+        "FinishTime": "2021-06-18T19:30:00.0000",
+        "DayOfTheWeek": "Saturday",
+        "WorkingDateType": "Work"
+      }
+    ]
+  }
+]

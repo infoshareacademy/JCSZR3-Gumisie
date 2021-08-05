@@ -17,7 +17,7 @@ $(document).ready(function () {
         changeMonth: true,
         changeYear: true,
         changeDay: false,
-        showButtonPanel: false,
+        showButtonPanel: true,
         dateFormat: 'mm-yyyy',
         onClose: function (dateText, inst) {
             dateAsObject = $(this).datepicker('getDate'); //the getDate method
