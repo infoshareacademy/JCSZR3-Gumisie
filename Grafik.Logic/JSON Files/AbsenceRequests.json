@@ -1,0 +1,35 @@
+[
+  {
+    "requestdate": "2021-06-18",
+    "absence":{
+        "EmployeeEmail": "bonnie.craig@example.com",
+        "AbsenceStartDate": "2021-07-18",
+        "AbsenceEndDate": "2021-07-20",
+        "AbsenceType": "AnnualLeave",
+        "Comment": "OwO",
+        "Status": "Pending"
+      }
+  },
+  {
+    "requestdate": "2021-06-18",
+    "absence":{
+        "EmployeeEmail": "bonnie.craig@example.com",
+        "AbsenceStartDate": "2021-08-18",
+        "AbsenceEndDate": "2021-08-20",
+        "AbsenceType": "SpecialLeave",
+        "Comment": "UwU",
+        "Status": "Declined"
+      }
+  },
+  {
+    "requestdate": "2021-06-18",
+    "absence":{
+        "EmployeeEmail": "bonnie.craig@example.com",
+        "AbsenceStartDate": "2021-09-19",
+        "AbsenceEndDate": "2021-09-19",
+        "AbsenceType": "OnDemand",
+        "Comment": "UwU",
+        "Status": "Approved"
+      }
+  }
+]

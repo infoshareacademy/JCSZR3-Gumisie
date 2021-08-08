@@ -13,6 +13,14 @@ namespace Grafik_Logic
         private const string Path = @"JSON Files\Employees.json";
         private static List<Timesheet> _timesheets;
         private const string Path2 = @"JSON Files\Timesheet.json";
+        public static List<AbsenceRequestClass> AbRequest;
+        private const string Path3 = @"C:\Users\Carmiu\Desktop\PROJEKT\JCSZR3-Gumisie\Grafik.Logic\JSON Files\AbsenceRequests.json";
+
+        public static void LoadAbsenceRequestsJson()
+        {
+            var json = File.ReadAllText(Path3);
+            AbRequest = JsonConvert.DeserializeObject<List<AbsenceRequestClass>>(json);
+        }
 
         public static void LoadEmployeesJson()
         {

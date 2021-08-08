@@ -12,12 +12,13 @@ namespace Grafik_Logic
 
         //public DayType WorkingDateType { get; set; }
 
-        public Shift() { }
-        public Shift(string employeeEmail, DateTime start, DateTime end, DateTime dayOfTheWeek) {
+        //public Shift() { }
+        public Shift(string employeeEmail, DateTime start, DateTime end, DateTime dayOfTheWeek)
+        { }
 
         public string DayType { get; set; }
 
-        public Shift() { }
+        //public Shift() { }
         public Shift(string employeeEmail, DateTime start, DateTime end, DateTime dayOfTheWeek, string type) {
 
             EmployeeEmail = employeeEmail;

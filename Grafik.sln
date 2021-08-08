@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grafik_Console", "Grafik\Gr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grafik_Logic", "Grafik.Logic\Grafik_Logic.csproj", "{92E2022E-8316-43CD-A3F9-A310E6C7DCFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafik_Web", "Grafik_Web\Grafik_Web.csproj", "{C48412BE-223F-419A-83B1-6A125A7DCFA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grafik_Web", "Grafik_Web\Grafik_Web.csproj", "{C48412BE-223F-419A-83B1-6A125A7DCFA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

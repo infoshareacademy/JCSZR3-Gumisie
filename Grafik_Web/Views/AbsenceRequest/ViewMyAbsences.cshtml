@@ -1,0 +1,147 @@
+﻿@using Newtonsoft.Json
+@using Grafik_Logic
+@model List<Grafik_Web.Models.AbsenceRequest>
+@{
+    ViewData["Title"] = "View My Absence Request";
+}
+
+<style type="text/css">
+    .text-big {
+        text-align-last: center;
+    }
+
+    .main {
+        display: flex;
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .undercolumn2 {
+        width: 90%;
+        align-content: center;
+    }
+
+    .column1 {
+        width: 75%;
+        height: 550px;
+        text-align-last: center;
+        align-content: center;
+        border-radius: 25px;
+        background: #dedfdc;
+        display: flex;
+    }
+
+    .tablez, tr, th, td {
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000000;
+    }
+
+    .column2 {
+        width: 20%;
+        margin: auto;
+        height: 550px;
+        text-align-last: center;
+        background: #dedfdc;
+        align-content: center;
+    }
+
+    .divi1 {
+        margin-top: 15px;
+        align-content: center;
+        margin-bottom: 15px;
+    }
+
+    input, label {
+        display: block;
+        align-content: center;
+    }
+
+    .row {
+        margin-top: 15px;
+    }
+</style>
+
+<div class="text-big">
+    <h1 style="">Request History</h1>
+</div>
+
+<div class="main">
+    <div class="column1">
+        <table class="tablez">
+            <tr>
+                <th>RequestId</th>
+                <th>Request Submission Date</th>
+                <th>Request Type</th>
+                <th>Absence Start Date</th>
+                <th>Absence End Date</th>
+            </tr>
+            @*@foreach (var request in AbsenceRequest.AbRequest.Where(x => x.Status != null))
+            {
+                <tr>@request.EmployeeEmail</tr>
+            }*@
+            @*@foreach (var request in AbsenceRequest)
+                {
+                    <tr>
+                        <td>@request.Requester</td>
+                    </tr>
+                }*@
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+        </table>
+    </div>
+    <div class="column2">
+        <form asp-action="ViewMyAbsenceRequests" asp-route-requestType="test">
+            <div>
+                <h3>Filter requests</h3>
+            </div>
+            <div class="row form-group text-center justify-content-center" style="margin-top: 5px; padding: 10px;">
+                <label for="absenceComment">Request ID</label>
+                <input type="text" class="form-control col-11" placeholder="ID" id="absenceComment" aria-label="Comments" />
+            </div>
+            <div class="VmarDiv1">
+                <label for="requestDate">Request Submission Date</label>
+                <input type="date" id="requestDate" style="margin: 0 auto;">
+            </div>
+            <div class="divi1">
+                <label for="requestType">Request Type</label>
+                <select class="custom-select col-11" id="requestType">
+                    <option selected>Select</option>
+                    <option value="1">Annual leave</option>
+                    <option value="2">Special Leave</option>
+                    <option value="3">On Demand</option>
+                </select>
+            </div>
+            <div class="divi1">
+                <label for="absenceStart">Absence Start Date</label>
+                <input type="date" name="absenceStart" style="margin: 0 auto;">
+            </div>
+            <div class="divi1" style="margin-bottom: 26px;">
+                <label for="absenceEnd">Absence End Date</label>
+                <input type="date" id="absenceEnd" style="margin: 0 auto;">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button input type="reset">Clear Filter</button>
+                </div>
+                <div class="col">
+                    <button type="submit">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
