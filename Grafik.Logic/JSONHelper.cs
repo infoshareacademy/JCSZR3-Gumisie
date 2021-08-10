@@ -14,11 +14,14 @@ namespace Grafik_Logic
         private static List<Timesheet> _timesheets;
         private const string Path2 = @"JSON Files\Timesheet.json";
 
-        public static void LoadEmployeesJson()
+        public static List<T> LoadEmployeesJson<T>()
         {
+            List<T> Data = new List<T>();
             var json = File.ReadAllText(Path);
-            Employees = JsonConvert.DeserializeObject<List<Employee>>(json);
+            Data = JsonConvert.DeserializeObject<List<T>>(json);
+            return Data;
         }
+
 
         public static void AddNewEmployeeToEmployeesList(Employee employee)
         {

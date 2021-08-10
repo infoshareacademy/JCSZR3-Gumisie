@@ -1,8 +1,96 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model TimeSheetViewModel
+@{
+    ViewData["Title"] = "Schedule";
+    DateTime date = DateTime.Now;
+    DateTime firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+    int lastDayOfMonth = (new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1)).Day;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Schedule</h1>
+
+    <div>
+        <button id="shift" class="accordion"><b>Set times for following days</b></button>
+        <div class="panel">
+            <div class="shift">
+                <table class="table" style="width:82%; margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>From: </th>
+                            <th>To: </th>
+                            <th> Clear:</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b><span>Days: </span></b></td>
+                            <td><input type="date" id="setFDFollowin"></td>
+                            <td><input type="date" id="setLDFollowin"></td>
+                            <td><input id="setItAll" name="newTimes" type="checkbox" /></td>
+                            <td rowspan="3">
+                                <button type="button" class="btn btn-primary" id="apply_btn" onclick="SetTime()">Apply</button><br /><br />
+                                <button type="submit" class="btn btn-secondary" id="remove_btn">Remove</button><br /><br />
+                                <button type="button" class="btn btn-primary" id="addnext_btn">Add next</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b><span>Times: </span></b></td>
+                            <td><input type="time" id="setFTFollowin"></td>
+                            <td><input type="time" id="setLTFollowin"></td>
+                            <td><input id="newTimes" name="newTimes" type="checkbox" onclick="validate()" /></td>
+                        </tr>
+                        <tr>
+                            <td><span><b>Shift details: </b></span></td>
+                            <td colspan="2"><textarea class="text-box multi-line" id="shiftDetailsF" style="width: 550px; margin-top: 0px; margin-bottom: 0px; height: 36px;" /></textarea></td>
+                            <td><input id="newDetails" name="newDetails" type="checkbox" onclick="validate()" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <table class="table">
+            <tr>
+                <td>
+                    <p><b>Total amount of time in month: <span id="totalTime">0h 0min</span></b></p>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary" id="save">Save</button>
+                </td>
+            </tr>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="button" class="btn btn-outline-dark" id="setDateForTimeSheet" placeholder="date" @*onfocusin="(this.type='month')" onmouseout="(this.type = 'button')"*@ value="Date">
+                        <input type="hidden" id="hidMonth" value="0" />
+                        <input type="hidden" id="hidYear" value="0" />
+                    </th>
+                    <th>Start time</th>
+                    <th>Finish time</th>
+                    <th>Total time</th>
+                    <th>Shift details</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="todayIs">
+                @for (int i = 1; i < lastDayOfMonth + 1; i++)
+                {
+                    var calendarDay = new DateTime(date.Year, date.Month, i);
+                    <tr>
+                        <td><b>@calendarDay.ToString("d'/'MM'/'yyyy")</b></td>
+                        <td>@Html.EditorFor(m => m.Timesheet.Shifts[i - 1].StartTime, new { htmlAttributes = new { onchange = "calculateTime('" + i + "');", @class = "form-control", @id = "timeStart_" + i } })</td>
+                        <td>@Html.EditorFor(m => m.Timesheet.Shifts[i - 1].FinishTime, new { htmlAttributes = new { onchange = "calculateTime('" + i + "');", @class = "form-control", @id = "timeFinish_" + i } })</td>
+                        <td><span id="total_@i">0h 0min</span></td>
+                        <td>@Html.EditorFor(m => m.Timesheet.Shifts[i - 1].ShiftDetails, new { htmlAttributes = new { style = "width: 550px;", @id = "shiftDetails_" + i } })</td>
+                        <td><span id="delete_@i" style="cursor: pointer" onclick="deleterow(@i)"><img src="~/icons/trash-2.svg" onclick="deleterow(@i)" /> <br />Delete</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
